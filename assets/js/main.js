@@ -1,3 +1,22 @@
+// Highlight the current page in the nav (header partial is generic)
+(function () {
+  var file = (location.pathname.split('/').pop() || '').toLowerCase();
+  if (file === 'index.html') file = '';
+  document.querySelectorAll('#primary-menu a').forEach(function (a) {
+    var href = (a.getAttribute('href') || '');
+    var hfile = href === '/' ? '' : href.split('/').pop().toLowerCase();
+    if (hfile === file) {
+      a.setAttribute('aria-current', 'page');
+      a.classList.add('is-active');
+      var mega = a.closest('.has-mega');
+      if (mega) {
+        var t = mega.querySelector('.mega-trigger');
+        if (t) t.classList.add('is-active');
+      }
+    }
+  });
+})();
+
 // Mobile nav toggle
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');

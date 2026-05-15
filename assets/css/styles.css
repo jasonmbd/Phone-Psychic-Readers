@@ -106,6 +106,7 @@ p { margin: 0 0 1rem; }
 .nav-list { list-style: none; display: flex; gap: 1.4rem; margin: 0; padding: 0; }
 .nav-list a { color: var(--ink-soft); font-weight: 500; }
 .nav-list a:hover { color: var(--purple); text-decoration: none; }
+.nav-list a.is-active, .mega-trigger.is-active { color: var(--purple); font-weight: 700; }
 
 /* Mega menu */
 .has-mega { position: relative; }
