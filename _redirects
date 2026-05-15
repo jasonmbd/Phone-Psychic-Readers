@@ -1,0 +1,40 @@
+# 301 redirects: old WordPress URLs -> new static pages
+# Preserves SEO/link equity after the rebuild cutover.
+# Format: <old path>  <new path>  <status>
+
+# --- Reading pages (old WP slugs had trailing slashes) ---
+/phone-tarot-reading/                                /phone-tarot-reading.html                                301
+/phone-tarot-reading                                 /phone-tarot-reading.html                                301
+/clairvoyant-reading/                                /clairvoyant-reading.html                                301
+/clairvoyant-reading                                 /clairvoyant-reading.html                                301
+/horoscope-astrology-psychic-readings-by-phone/      /horoscope-astrology-psychic-readings-by-phone.html      301
+/horoscope-astrology-psychic-readings-by-phone       /horoscope-astrology-psychic-readings-by-phone.html      301
+/psychic-love-readings-by-phone/                     /psychic-love-readings-by-phone.html                     301
+/psychic-love-readings-by-phone                      /psychic-love-readings-by-phone.html                     301
+/money-prosperity-psychic-readings/                  /money-prosperity-psychic-readings.html                  301
+/money-prosperity-psychic-readings                   /money-prosperity-psychic-readings.html                  301
+/past-life-psychic-readings-by-phone/                /past-life-psychic-readings-by-phone.html                301
+/past-life-psychic-readings-by-phone                 /past-life-psychic-readings-by-phone.html                301
+/dream-interpretation-psychic-readings-phone/        /dream-interpretation-psychic-readings-phone.html        301
+/dream-interpretation-psychic-readings-phone         /dream-interpretation-psychic-readings-phone.html        301
+
+# Major Arcana page not rebuilt yet — point to the closest relevant page
+/major-arcana-tarot-card-meanings/                   /phone-tarot-reading.html                                301
+/major-arcana-tarot-card-meanings                    /phone-tarot-reading.html                                301
+
+# --- Site pages ---
+/about-us/                                           /about.html                                              301
+/about-us                                            /about.html                                              301
+/contact-us/                                         /contact.html                                            301
+/contact-us                                          /contact.html                                            301
+/privacy-policy/                                     /privacy.html                                            301
+/privacy-policy                                      /privacy.html                                            301
+/terms-and-conditions/                               /terms.html                                              301
+/terms-and-conditions                                /terms.html                                              301
+
+# --- Pages with no current equivalent: send to home until rebuilt ---
+/areas-serviced/                                     /                                                        301
+/areas-serviced                                      /                                                        301
+/blog/                                               /                                                        301
+/blog                                                /                                                        301
+/blog/*                                              /                                                        301
