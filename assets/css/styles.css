@@ -282,22 +282,39 @@ blockquote cite { color: var(--ink-soft); font-style: normal; font-size: 0.9rem;
   .intro-grid, .category { grid-template-columns: 1fr; }
   .category:nth-child(even) .category-media { order: 0; }
 
-  /* Hero on mobile: image is a faded background, content sits above the fold */
-  .hero { padding: 1.5rem 0 1.75rem; }
-  .hero-grid { grid-template-columns: 1fr; gap: 1rem; }
+  /* Hero on mobile: full-width image with dark overlay, white text on top */
+  .hero {
+    padding: 2.25rem 0 2.5rem;
+    background: var(--purple-dark);
+    color: #fff;
+  }
   .hero::before {
     content: "";
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(180deg, rgba(245, 237, 255, 0.82) 0%, rgba(255, 255, 255, 0.94) 75%),
+      linear-gradient(180deg, rgba(28, 21, 48, 0.55) 0%, rgba(77, 31, 102, 0.85) 100%),
       url('../img/phone-psychic-readings.jpg');
     background-size: cover;
     background-position: center;
     z-index: 0;
   }
+  .hero-grid { grid-template-columns: 1fr; gap: 1rem; }
   .hero-img { display: none; }
-  .hero-copy h1 { font-size: clamp(1.7rem, 6vw, 2.2rem); }
-  .lede { font-size: 1rem; }
+
+  /* Text + components recolored for legibility on the image */
+  .hero .eyebrow { color: var(--gold); }
+  .hero .stars { color: var(--gold); }
+  .hero h1 { color: #fff; font-size: clamp(1.7rem, 6.2vw, 2.3rem); }
+  .hero .lede { color: rgba(255, 255, 255, 0.94); font-size: 1.02rem; }
+  .hero-trust li {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.28);
+    color: #fff;
+    backdrop-filter: blur(4px);
+  }
+  .hero-trust li::before { color: var(--gold); }
+  .hero .btn-ghost { color: #fff; border-color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.05); }
+  .hero .btn-ghost:hover { background: rgba(255, 255, 255, 0.16); }
   .hero-cta .btn { flex: 1 1 auto; text-align: center; }
 }
 @media (max-width: 720px) {
