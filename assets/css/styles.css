@@ -126,8 +126,9 @@ p { margin: 0 0 1rem; }
 .has-mega[aria-expanded="true"] .mega-trigger::after { transform: rotate(225deg); }
 
 .mega-panel {
-  position: absolute; top: calc(100% + 0.75rem); left: 50%;
+  position: absolute; top: 100%; left: 50%;
   transform: translateX(-50%) translateY(8px);
+  margin-top: 0.7rem;
   width: min(640px, 90vw);
   background: var(--bg);
   border: 1px solid var(--border);
@@ -135,14 +136,21 @@ p { margin: 0 0 1rem; }
   box-shadow: var(--shadow-lg);
   padding: 1rem;
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s 0.12s;
   z-index: 50;
+}
+/* Invisible bridge across the visual gap so hover isn't lost between
+   the trigger and the panel */
+.mega-panel::before {
+  content: ""; position: absolute;
+  left: 0; right: 0; top: -0.9rem; height: 0.9rem;
 }
 .has-mega:hover .mega-panel,
 .has-mega:focus-within .mega-panel,
 .has-mega[aria-expanded="true"] .mega-panel {
   opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateX(-50%) translateY(0);
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0s;
 }
 .mega-grid {
   list-style: none; margin: 0; padding: 0;
@@ -422,11 +430,13 @@ blockquote cite { color: var(--ink); font-style: normal; font-size: 0.92rem; fon
   /* Mega menu collapses inline on mobile */
   .mega-panel {
     position: static; transform: none; width: 100%;
+    margin-top: 0;
     box-shadow: none; border: 0; padding: 0.25rem 0 0.25rem 0.75rem;
     opacity: 1; visibility: hidden; pointer-events: none;
     max-height: 0; overflow: hidden;
     transition: max-height 0.2s ease, visibility 0.2s;
   }
+  .mega-panel::before { display: none; }
   .has-mega[aria-expanded="true"] .mega-panel {
     visibility: visible; pointer-events: auto; max-height: 30rem;
   }
