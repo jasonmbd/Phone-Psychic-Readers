@@ -242,8 +242,14 @@ blockquote {
   padding: 1.4rem 1.4rem;
 }
 blockquote .stars { display: block; margin-bottom: 0.5rem; }
-blockquote p { margin: 0 0 0.6rem; font-size: 1rem; color: var(--ink); }
-blockquote cite { color: var(--ink-soft); font-style: normal; font-size: 0.9rem; }
+blockquote p { margin: 0 0 0.9rem; font-size: 1rem; color: var(--ink); }
+.quote-author { display: flex; align-items: center; gap: 0.7rem; }
+.quote-author img {
+  width: 48px; height: 48px; border-radius: 50%;
+  object-fit: cover; flex-shrink: 0;
+  border: 2px solid var(--surface-soft);
+}
+blockquote cite { color: var(--ink); font-style: normal; font-size: 0.92rem; font-weight: 600; }
 
 /* FAQ */
 .faq details {
