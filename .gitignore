@@ -5,3 +5,16 @@ node_modules/
 .netlify/
 .vscode/
 .idea/
+
+# Design source files (not needed by website)
+*.ai
+*.eps
+*.psd
+*.zip
+
+# macOS metadata
+__MACOSX/
+
+# Asset working folders (kept locally, not in repo)
+assets/img/Phone_Psychic_Readers/
+assets/img/Tarot Card - Major Arcana Deck/
