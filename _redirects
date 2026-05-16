@@ -32,9 +32,10 @@
 /terms-and-conditions/                               /terms.html                                              301
 /terms-and-conditions                                /terms.html                                              301
 
+# --- Blog ---
+/blog/                                               /blog.html                                               301
+/blog                                                /blog.html                                               301
+
 # --- Pages with no current equivalent: send to home until rebuilt ---
 /areas-serviced/                                     /                                                        301
 /areas-serviced                                      /                                                        301
-/blog/                                               /                                                        301
-/blog                                                /                                                        301
-/blog/*                                              /                                                        301
