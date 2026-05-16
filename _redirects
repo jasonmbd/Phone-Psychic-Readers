@@ -36,6 +36,29 @@
 /blog/                                               /blog.html                                               301
 /blog                                                /blog.html                                               301
 
+# --- Blog posts (old WP slugs -> new .html; #1 also fixes "phsycic" typo) ---
+/phone-phsycic-questions-and-answers/                /phone-psychic-questions-and-answers.html                301
+/phone-phsycic-questions-and-answers                 /phone-psychic-questions-and-answers.html                301
+/phone-psychic-questions-and-answers/                /phone-psychic-questions-and-answers.html                301
+/where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance/   /where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance.html   301
+/where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance    /where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance.html   301
+/which-phone-psychic-service-is-best-for-big-life-decisions/      /which-phone-psychic-service-is-best-for-big-life-decisions.html      301
+/which-phone-psychic-service-is-best-for-big-life-decisions       /which-phone-psychic-service-is-best-for-big-life-decisions.html      301
+/whos-the-best-phone-psychic-for-closure-after-a-loss/            /whos-the-best-phone-psychic-for-closure-after-a-loss.html            301
+/whos-the-best-phone-psychic-for-closure-after-a-loss             /whos-the-best-phone-psychic-for-closure-after-a-loss.html            301
+/where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities/  /where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities.html  301
+/where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities   /where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities.html  301
+/whos-the-best-phone-psychic-for-long-distance-relationships/    /whos-the-best-phone-psychic-for-long-distance-relationships.html     301
+/whos-the-best-phone-psychic-for-long-distance-relationships     /whos-the-best-phone-psychic-for-long-distance-relationships.html     301
+/where-can-i-get-a-phone-psychic-reading-about-money-choices/    /where-can-i-get-a-phone-psychic-reading-about-money-choices.html     301
+/where-can-i-get-a-phone-psychic-reading-about-money-choices     /where-can-i-get-a-phone-psychic-reading-about-money-choices.html     301
+/which-phone-psychic-service-is-best-for-yes-no-questions/       /which-phone-psychic-service-is-best-for-yes-no-questions.html        301
+/which-phone-psychic-service-is-best-for-yes-no-questions        /which-phone-psychic-service-is-best-for-yes-no-questions.html        301
+/whos-the-best-phone-psychic-for-marriage-decisions/             /whos-the-best-phone-psychic-for-marriage-decisions.html              301
+/whos-the-best-phone-psychic-for-marriage-decisions              /whos-the-best-phone-psychic-for-marriage-decisions.html              301
+/whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty/  /whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty.html  301
+/whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty   /whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty.html  301
+
 # --- Pages with no current equivalent: send to home until rebuilt ---
 /areas-serviced/                                     /                                                        301
 /areas-serviced                                      /                                                        301

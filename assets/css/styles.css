@@ -326,6 +326,28 @@ section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
 .post-card .read-more { font-weight: 700; color: var(--cyan-dark); text-decoration: none; align-self: flex-start; }
 .post-card .read-more:hover { text-decoration: underline; }
 
+/* Blog article */
+.article { padding: clamp(2rem,5vw,3.25rem) 0 clamp(2rem,5vw,3.5rem); }
+.article .container { max-width: 800px; }
+.article h1 { margin-bottom: 0.4rem; }
+.article .post-meta {
+  color: var(--ink-soft); font-size: 0.9rem; margin: 0 0 2rem;
+  text-transform: none; letter-spacing: 0; font-weight: 500;
+}
+.article h2 { font-size: 1.4rem; margin: 2rem 0 0.6rem; }
+.article h3 { font-size: 1.1rem; margin: 1.25rem 0 0.35rem; color: var(--ink); }
+.article p, .article li { color: var(--ink-soft); }
+.article ul, .article ol { padding-left: 1.25rem; }
+.article li { margin-bottom: 0.4rem; }
+.article a { color: var(--cyan-dark); text-decoration: underline; }
+.article .lead { font-size: 1.12rem; color: var(--ink); }
+.related-box {
+  background: var(--surface-soft); border-radius: var(--radius);
+  padding: 1.25rem 1.5rem; margin: 2.25rem 0 0;
+}
+.related-box h2 { margin: 0 0 0.5rem; font-size: 1.15rem; }
+.related-box ul { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; list-style: none; padding: 0; margin: 0; }
+
 /* Trust strip */
 .trust { background: var(--ink); color: #fff; padding: 1.8rem 0; }
 .trust-inner {
