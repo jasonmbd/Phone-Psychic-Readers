@@ -17,6 +17,27 @@
   });
 })();
 
+// Auto-build a table of contents from article H2s (nav.toc[data-auto])
+(function () {
+  var toc = document.querySelector('.toc[data-auto]');
+  if (!toc) return;
+  var heads = document.querySelectorAll('.article .container > h2');
+  if (!heads.length) { toc.remove(); return; }
+  var ol = document.createElement('ol');
+  heads.forEach(function (h, i) {
+    var id = h.id || (h.textContent.toLowerCase()
+      .replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-').slice(0, 60) || 'q' + i);
+    h.id = id;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    ol.appendChild(li);
+  });
+  toc.appendChild(ol);
+})();
+
 // Mobile nav toggle
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');
