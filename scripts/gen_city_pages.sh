@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# One-off generator: Phase-1 city home pages (city-localized clone of index.html).
+# Pure bash (no python/node on this box). Run from repo root: bash scripts/gen_city_pages.sh
+set -euo pipefail
+cd "$(dirname "$0")/.."
+OUT="src"
+
+# city|slug|state|county|region|hook|civic|HOODS|ZIPS|LANDMARKS
+# HOODS/LANDMARKS already formatted as natural lists; ZIPS comma-joined.
+read -r -d '' ROWS <<'DATA' || true
+Corona del Mar|corona-del-mar-phone-psychic|CA|Orange County, California|Newport Beach @AMP@ the Orange Coast|between the bluffs on PCH or up in Newport Coast|the Corona del Mar branch library on Marigold Avenue|the Village, Shore Cliffs, Cameo Shores, Irvine Terrace, Newport Coast, and Pelican Hill|92625, 92614|Corona del Mar State Beach, Little Corona, the Sherman Library @AMP@ Gardens, Pacific Coast Highway, and Big Corona
+Dana Point|dana-point-phone-psychic|CA|Orange County, California|the South Orange Coast|down in the Lantern District or up by Monarch Beach|the Dana Point Community Center on Golden Lantern|the Lantern District, Monarch Beach, Capistrano Beach, the Headlands, and Niguel Shores|92629, 92624|Dana Point Harbor, Doheny State Beach, Salt Creek Beach, the Ocean Institute, and Pacific Coast Highway
+Vacaville|vacaville-phone-psychic|CA|Solano County, California|Solano County, between Sacramento and the Bay|out in Browns Valley or off Alamo Drive|the Vacaville Public Library on Town Square Place|Browns Valley, North Village, Alamo, Cheyenne, Padan, and the Creekside area|95687, 95688, 95696|the Vacaville Premium Outlets, Lagoon Valley Park, Andrews Park, the old Nut Tree, and Travis Air Force Base nearby
+Pismo Beach|pismo-beach-phone-psychic|CA|San Luis Obispo County, California|the Five Cities on the Central Coast|up in Shell Beach or down by the pier|the Pismo Beach City Hall on Pomeroy Avenue|Shell Beach, Sunset Palisades, the Pier area, Pismo Heights, and the Mesa|93449|the Pismo Pier, the Monarch Butterfly Grove, Dinosaur Caves Park, the Pismo Beach Premium Outlets, and the Oceano Dunes
+Interlaken|interlaken-phone-psychic|CA|Santa Cruz County, California|the Pajaro Valley near Watsonville|out by Pinto Lake or along Green Valley Road|the Pinto Lake County Park entrance on Green Valley Road|the Pinto Lake area, Wheelock, Amesti, Green Valley, and Buena Vista|95076|Pinto Lake, the Pajaro Valley farmland, the Watsonville Slough, Highway 152, and Mount Madonna nearby
+Lakeport|lakeport-phone-psychic|CA|Lake County, California|the Clear Lake basin|along the lakefront or up in Lakeside Heights|the Lake County Courthouse on Main Street|downtown Lakeport, the lakefront, Lakeside Heights, Scotts Valley, and Finley|95453|Clear Lake, Library Park, the Lake County Courthouse Museum, Mount Konocti views, and Clear Lake State Park nearby
+Rowland Heights|rowland-heights-phone-psychic|CA|Los Angeles County, California|the eastern San Gabriel Valley|up by Powder Canyon or along Colima Road|the Rowland Heights Community Center on Nogales Street|Pathfinder, Nogales, the Colima corridor, Powder Canyon, and Vantage Pointe|91748, 91745|Schabarum Regional Park, the Puente Hills, the Pomona (60) Freeway, Powder Canyon trails, and the Colima Road shops
+Palmdale|palmdale-phone-psychic|CA|Los Angeles County, California|the Antelope Valley|out in Rancho Vista or up toward Anaverde|Palmdale City Hall on East Avenue Q|Rancho Vista, Anaverde, the Quartz Hill side, the Courson area, and Desert View Highlands|93550, 93551, 93552, 93591|the Antelope Valley poppy fields, the Palmdale Amphitheater, DryTown Water Park, Marie Kerr Park, and the Antelope Valley (14) Freeway
+Solvang|solvang-phone-psychic|CA|Santa Barbara County, California|the Santa Ynez Valley|near the mission or out toward the Alisal|Solvang City Hall on First Street|the Danish village center, Alisal, Skytt Mesa, and the Atterdag area|93463|the Old Mission Santa Inés, the Solvang windmills, Hans Christian Andersen Park, Santa Ynez Valley wine country, and Highway 246
+Placerville|placerville-phone-psychic|CA|El Dorado County, California|the Sierra foothills Gold Country|up Cedar Ravine or out toward Smith Flat|the El Dorado County Historical Museum on Placerville Drive|historic Main Street, the Hangtown area, Smith Flat, the Gold Hill side, and Cedar Ravine|95667|historic Main Street, Gold Bug Park @AMP@ Mine, Apple Hill nearby, the Highway 50 corridor toward Tahoe, and the El Dorado County fairgrounds
+Koreatown|koreatown-phone-psychic|CA|Los Angeles, California|central Los Angeles|off Wilshire or near the Wiltern|the Pio Pico Koreatown branch library on Grand View Street|Wilshire Center, the Wiltern area, Country Club Park, the Harvard Heights edge, and the Vermont corridor|90004, 90005, 90006, 90010, 90020|the Wiltern Theatre, Lafayette Park, the Wilshire/Western Metro station, Wilshire Boulevard, and the Robert F. Kennedy Community Schools
+Healdsburg|healdsburg-phone-psychic|CA|Sonoma County, California|Sonoma wine country|near the Plaza or out toward Dry Creek|Healdsburg City Hall on Grant Street|the Plaza, Fitch Mountain, the Dry Creek side, the Alexander Valley edge, and Parkland Farms|95448|the Healdsburg Plaza, the Russian River, Dry Creek Valley vineyards, Fitch Mountain, and Alexander Valley
+Ukiah|ukiah-phone-psychic|CA|Mendocino County, California|inland Mendocino County|on the Westside or out by Vichy Springs|the Mendocino County Courthouse on West Perkins Street|downtown Ukiah, the Westside, Yokayo, the Vichy Springs area, and Deerwood|95482|the Grace Hudson Museum, Lake Mendocino, Low Gap Park, the Mendocino County Courthouse, and the Highway 101 corridor
+Cerritos|cerritos-phone-psychic|CA|Los Angeles County, California|the Gateway Cities|near the Towne Center or off Bloomfield|Cerritos City Hall on Bloomfield Avenue|Cerritos Towne Center, the College Park area, Sunny Cove, and the Bloomfield corridor|90703|the Cerritos Center for the Performing Arts, Los Cerritos Center, Cerritos Regional Park, the 605 and 91 freeways, and the Cerritos Sculpture Garden
+Cambria|cambria-phone-psychic|CA|San Luis Obispo County, California|the Central Coast near San Simeon|up on Lodge Hill or down by Moonstone Beach|the Cambria Veterans Memorial Building on Main Street|the East Village, the West Village, Marine Terrace, Lodge Hill, and Park Hill|93428|Moonstone Beach, the Fiscalini Ranch Preserve, Hearst Castle near San Simeon, Highway 1, and the Piedras Blancas elephant seals
+Rancho Cordova|rancho-cordova-phone-psychic|CA|Sacramento County, California|greater Sacramento|out in Anatolia or near Old Town|Rancho Cordova City Hall on Civic Center Drive|Mills, Anatolia, Sunrise Douglas, the Old Town, and the Rancho Murieta side|95670, 95742, 95741|the American River, Hagan Community Park, the Highway 50 corridor, Mather Airport, and Folsom Lake nearby
+DATA
+
+TPL="$(cat scripts/city.tpl)"
+
+count=0
+while IFS='|' read -r CITY SLUG STATE COUNTY REGION HOOK CIVIC HOODS ZIPS LANDMARKS; do
+  [ -z "${CITY:-}" ] && continue
+  CITY_L="$(echo "$CITY" | tr '[:upper:]' '[:lower:]')"
+  STATE_L="$(echo "$STATE" | tr '[:upper:]' '[:lower:]')"
+  page="$TPL"
+  page="${page//\{\{SLUG\}\}/$SLUG}"
+  page="${page//\{\{CITY_L\}\}/$CITY_L}"
+  page="${page//\{\{STATE_L\}\}/$STATE_L}"
+  page="${page//\{\{CITY\}\}/$CITY}"
+  page="${page//\{\{STATE\}\}/$STATE}"
+  page="${page//\{\{COUNTY\}\}/$COUNTY}"
+  page="${page//\{\{REGION\}\}/$REGION}"
+  page="${page//\{\{HOOK\}\}/$HOOK}"
+  page="${page//\{\{CIVIC\}\}/$CIVIC}"
+  page="${page//\{\{HOODS\}\}/$HOODS}"
+  page="${page//\{\{ZIPS\}\}/$ZIPS}"
+  page="${page//\{\{LANDMARKS\}\}/$LANDMARKS}"
+  printf '%s' "$page" > "$OUT/$SLUG.html"
+  sed -i 's/@AMP@/\&amp;/g' "$OUT/$SLUG.html"
+  echo "wrote $SLUG.html"
+  count=$((count+1))
+done <<< "$ROWS"
+echo "done $count pages"
