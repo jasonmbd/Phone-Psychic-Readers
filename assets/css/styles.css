@@ -377,6 +377,26 @@ section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
 .card-figure figcaption {
   margin-top: 0.6rem; font-size: 0.85rem; opacity: 0.7;
 }
+/* Card shown inside the hero (right on desktop, under text on mobile) */
+.hero-card { margin: 0; }
+.hero-card img {
+  width: 100%; max-width: 240px; height: auto; display: block;
+  margin: 1.5rem auto 0; border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+}
+.hero-card figcaption {
+  margin-top: 0.5rem; text-align: center;
+  font-size: 0.78rem; color: rgba(255, 255, 255, 0.8);
+}
+.hero-grid:has(.hero-card) {
+  display: grid; gap: 2rem; max-width: 1060px;
+  grid-template-columns: 1fr; align-items: center;
+}
+@media (min-width: 760px) {
+  .hero-grid:has(.hero-card) { grid-template-columns: 1.25fr 0.75fr; }
+  .hero-card img { margin-top: 0; max-width: 260px; }
+}
 .toc {
   background: var(--surface-soft); border-radius: var(--radius);
   padding: 1.25rem 1.5rem; margin: 0 0 2rem;
