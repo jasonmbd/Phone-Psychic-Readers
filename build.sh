@@ -27,7 +27,7 @@ for src in src/*.html; do
   out="./$(basename "$src")"
   awk -v hdr="$HEADER" -v ftr="$FOOTER" '
     /<!--#include:header-->/ {
-      print "<!-- GENERATED from src/ + partials/ — edit those, then run build.sh -->";
+      print "<!-- GENERATED from src/ + partials/ - edit those, then run build.sh -->";
       while ((getline line < hdr) > 0) print line; close(hdr); next
     }
     /<!--#include:footer-->/ {
