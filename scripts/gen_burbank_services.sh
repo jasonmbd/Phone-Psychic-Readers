@@ -6,7 +6,6 @@ cd "$(dirname "$0")/.."
 S=src
 
 read -r -d '' ROWS <<'DATA' || true
-burbank-psychic-reading|Psychic Reading|psychic-reading|Psychic|burbank-psychic
 burbank-psychic-love-readings-by-phone|Love Psychic Reading|psychic-love-readings-by-phone|Psychic|burbank-psychic
 burbank-relationship-psychic-reading|Relationship Psychic Reading|relationship-psychic-reading|Psychic|burbank-psychic
 burbank-career-psychic-reading|Career Psychic Reading|career-psychic-reading|Psychic|burbank-psychic
