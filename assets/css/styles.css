@@ -557,6 +557,10 @@ blockquote cite { color: var(--ink); font-style: normal; font-size: 0.92rem; fon
 .site-footer nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-end; }
 .site-footer a { color: #d6cfee; }
 .site-footer a:hover { color: #fff; }
+.footer-social { list-style: none; padding: 0; margin: 0.75rem 0 0; display: flex; flex-wrap: wrap; gap: 0.85rem; font-size: 0.85rem; }
+.nap-block { font-style: normal; line-height: 1.6; }
+.map-embed { margin-top: 1rem; }
+.map-embed iframe { width: 100%; max-width: 600px; height: 340px; border: 0; border-radius: 12px; }
 .legal { grid-column: 1 / -1; font-size: 0.8rem; color: #8c83b0; border-top: 1px solid #2a2452; padding-top: 1rem; margin: 1rem 0 0; }
 
 /* Responsive */
