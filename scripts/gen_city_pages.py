@@ -159,7 +159,7 @@ TPL = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Phone Psychic Readings {city}, {state} | Live 24/7 from $1/Min</title>
-<meta name="description" content="Phone psychic readings in {city}, {state} — talk to a hand-vetted psychic 24/7 from anywhere in {region}. First call $1/min, 15 minutes for $10, hang up anytime.">
+<meta name="description" content="Phone psychic readings in {city}, {state} - talk to a hand-vetted psychic 24/7 from anywhere in {region}. First call $1/min, 15 minutes for $10, hang up anytime.">
 <meta name="keywords" content="phone psychic {city_l}, psychic reading {city_l}, psychic {city_l} {state_l}, tarot reading {city_l}, love psychic {city_l}">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Phone Psychic Readings {city}, {state} | Live 24/7">
@@ -170,7 +170,7 @@ TPL = """<!doctype html>
 <link rel="icon" type="image/png" href="assets/img/phone-psychic-readers-icon.png">
 <link rel="stylesheet" href="assets/css/styles.css">
 <script type="application/ld+json">
-{{ "@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://www.phonepsychicreaders.com/{slug}.html#business", "name": "Phone Psychic Readers — {city}", "image": "https://www.phonepsychicreaders.com/assets/img/phone-psychic-readers-logo.png", "telephone": "+1-888-920-6662", "email": "phonepsychicreaders@gmail.com", "url": "https://www.phonepsychicreaders.com/{slug}.html", "priceRange": "$", "description": "Live phone psychics serving {city}, {state} 24/7 — psychic, tarot, astrology, and numerology readings from $1 per minute.", "areaServed": {{ "@type": "City", "name": "{city}", "containedInPlace": {{ "@type": "AdministrativeArea", "name": "{county}" }} }}, "address": {{ "@type": "PostalAddress", "addressLocality": "{city}", "addressRegion": "{state}", "addressCountry": "US" }}, "openingHoursSpecification": {{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }}, "contactPoint": {{ "@type": "ContactPoint", "telephone": "+1-888-920-6662", "contactType": "customer service", "availableLanguage": "English" }} }}
+{{ "@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://www.phonepsychicreaders.com/{slug}.html#business", "name": "Phone Psychic Readers - {city}", "image": "https://www.phonepsychicreaders.com/assets/img/phone-psychic-readers-logo.png", "telephone": "+1-888-920-6662", "email": "phonepsychicreaders@gmail.com", "url": "https://www.phonepsychicreaders.com/{slug}.html", "priceRange": "$", "description": "Live phone psychics serving {city}, {state} 24/7 - psychic, tarot, astrology, and numerology readings from $1 per minute.", "areaServed": {{ "@type": "City", "name": "{city}", "containedInPlace": {{ "@type": "AdministrativeArea", "name": "{county}" }} }}, "address": {{ "@type": "PostalAddress", "addressLocality": "{city}", "addressRegion": "{state}", "addressCountry": "US" }}, "openingHoursSpecification": {{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }}, "contactPoint": {{ "@type": "ContactPoint", "telephone": "+1-888-920-6662", "contactType": "customer service", "availableLanguage": "English" }} }}
 </script>
 <script type="application/ld+json">
 {{ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -205,7 +205,7 @@ TPL = """<!doctype html>
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow"><span class="stars" aria-hidden="true">★</span> Trusted by callers across {city} &amp; {region}</p>
-        <h1>Phone Psychic Readings in {city}, {state} — Live, 24/7, From $1/Min</h1>
+        <h1>Phone Psychic Readings in {city}, {state} - Live, 24/7, From $1/Min</h1>
         <p class="lede">Get a <strong>phone psychic reading in {city}</strong> without leaving home. Every psychic on our line is hand-vetted by our master psychics. Connect in under 60 seconds, {hook}. Your first minute is $1 and you can hang up anytime.</p>
         <div class="hero-cta">
           <a class="btn btn-primary btn-lg" href="tel:+18889206662">Call (888) 920-6662</a>
@@ -218,7 +218,7 @@ TPL = """<!doctype html>
         </ul>
       </div>
       <div class="hero-img">
-        <img src="assets/img/phone-psychic-readings.jpg" alt="Phone psychic readings in {city}, {state} — live psychic available 24 hours a day" width="520" height="390">
+        <img src="assets/img/phone-psychic-readings.jpg" alt="Phone psychic readings in {city}, {state} - live psychic available 24 hours a day" width="520" height="390">
       </div>
     </div>
   </section>
@@ -228,8 +228,8 @@ TPL = """<!doctype html>
       <h2>Accurate Phone Psychics for {city}, {state}</h2>
       <div class="intro-grid">
         <div>
-          <p>A <strong>phone psychic reading in {city}</strong> is the fastest way to get real answers — no drive, no waiting room, no appointment. First-time callers get an introductory rate of <strong>$1 per minute</strong>, or grab the <strong>15 minutes for $10</strong> bundle. Talk to a live phone psychic about love, money, career, and the questions you can't shake.</p>
-          <p>We serve every part of {city} and {region} by phone. The line is open 24/7, so the reader is awake when you are — late at night, early morning, weekends, holidays.</p>
+          <p>A <strong>phone psychic reading in {city}</strong> is the fastest way to get real answers - no drive, no waiting room, no appointment. First-time callers get an introductory rate of <strong>$1 per minute</strong>, or grab the <strong>15 minutes for $10</strong> bundle. Talk to a live phone psychic about love, money, career, and the questions you can't shake.</p>
+          <p>We serve every part of {city} and {region} by phone. The line is open 24/7, so the reader is awake when you are - late at night, early morning, weekends, holidays.</p>
           <p><a class="btn btn-primary" href="tel:+18889206662">Call (888) 920-6662 now</a></p>
         </div>
         <img src="assets/img/live-phone-psychic.jpg" alt="Live phone psychic taking a 24/7 call from a {city} caller" width="480" height="360">
@@ -252,7 +252,7 @@ TPL = """<!doctype html>
       <div class="category">
         <div>
           <h2><a href="psychic.html">Psychic</a></h2>
-          <p>Looking for clarity in love, career, or life's next chapter in {city}? Our experienced phone psychics help you see the situation straight — a full range of phone-based psychic services, connecting you with a trusted reader from anywhere in {city}, anytime.</p>
+          <p>Looking for clarity in love, career, or life's next chapter in {city}? Our experienced phone psychics help you see the situation straight - a full range of phone-based psychic services, connecting you with a trusted reader from anywhere in {city}, anytime.</p>
           <ul class="service-tags">
             <li>Psychic Readings</li><li>Tarot Card Readings</li><li>Love Psychic Readings</li><li>Relationship Readings</li><li>Career Psychic Readings</li><li>Dream Interpretation</li><li>Aura Readings</li><li>Past Life Readings</li>
           </ul>
@@ -264,7 +264,7 @@ TPL = """<!doctype html>
       <div class="category">
         <div>
           <h2><a href="astrologer.html">Astrologer</a></h2>
-          <p>For {city} callers who want real answers, not generic horoscopes. Personal astrology readings — birth chart and natal chart interpretations — based on your exact date, time, and place of birth, to understand relationship patterns, career timing, and big life shifts. Available by phone for anyone in {city}.</p>
+          <p>For {city} callers who want real answers, not generic horoscopes. Personal astrology readings - birth chart and natal chart interpretations - based on your exact date, time, and place of birth, to understand relationship patterns, career timing, and big life shifts. Available by phone for anyone in {city}.</p>
           <ul class="service-tags">
             <li>Personal Astrology Reading</li><li>Birth Chart Reading</li><li>Natal Chart Reading</li><li>Love Compatibility</li><li>Career Timing</li><li>Future Trends</li>
           </ul>
@@ -276,7 +276,7 @@ TPL = """<!doctype html>
       <div class="category">
         <div>
           <h2><a href="numerologist.html">Numerologist</a></h2>
-          <p>Our numerology readings break down the meaning behind your numbers and how they shape your life in {city} — life-path, destiny, name, and compatibility numerology, explained in plain terms. Helpful for personal strengths, relationships, and career alignment. Available by phone across {city}.</p>
+          <p>Our numerology readings break down the meaning behind your numbers and how they shape your life in {city} - life-path, destiny, name, and compatibility numerology, explained in plain terms. Helpful for personal strengths, relationships, and career alignment. Available by phone across {city}.</p>
           <ul class="service-tags">
             <li>Life Path Number</li><li>Destiny Number</li><li>Name Numerology</li><li>Compatibility Numerology</li>
           </ul>
@@ -288,7 +288,7 @@ TPL = """<!doctype html>
       <div class="category">
         <div>
           <h2><a href="fortune-telling-services.html">Fortune Telling Services</a></h2>
-          <p>For {city} folks who want direct insight into the future without the fluff. These phone sessions focus on love, relationships, career, and personal direction — intuitive insight and psychic interpretation so you feel grounded instead of overwhelmed.</p>
+          <p>For {city} folks who want direct insight into the future without the fluff. These phone sessions focus on love, relationships, career, and personal direction - intuitive insight and psychic interpretation so you feel grounded instead of overwhelmed.</p>
           <ul class="service-tags">
             <li>Love &amp; Romance</li><li>Relationships</li><li>Career &amp; Work</li><li>Personal Direction</li>
           </ul>
@@ -303,16 +303,16 @@ TPL = """<!doctype html>
   <section class="section-soft">
     <div class="container" style="max-width: 860px;">
       <h2>Serving Every {city} Neighborhood</h2>
-      <p>We take calls from every part of {city} and {region}. You don't need to live near anything — the phone reaches all of it: {hoods}. Whatever corner you're in, it's the same number, the same hand-vetted readers, the same $1 first minute.</p>
+      <p>We take calls from every part of {city} and {region}. You don't need to live near anything - the phone reaches all of it: {hoods}. Whatever corner you're in, it's the same number, the same hand-vetted readers, the same $1 first minute.</p>
 
       <h2>Every {city} Zip Code</h2>
       <p>It does not matter which zip you are in. We cover all of them by phone: {zips}. Same number, same readers, same introductory rate.</p>
 
       <h2>{city} Locals Know the Area</h2>
-      <p>You know {city}. So do we — {landmarks}. Our readers get that the question behind your question is usually a real one: rent, a job, a relationship, a move. We keep it straight with you, no fear tactics, no pressure.</p>
+      <p>You know {city}. So do we - {landmarks}. Our readers get that the question behind your question is usually a real one: rent, a job, a relationship, a move. We keep it straight with you, no fear tactics, no pressure.</p>
 
       <h2>How to Reach Us From Anywhere in {city}</h2>
-      <p>There is nothing to drive to — it is a phone call. People ask where we are "based" relative to town, so here is the easy way to picture it. Start at {civic}. From there you would normally drive and wait to see someone. With us you skip all of that. From that spot, or anywhere else in {city}, the route is the same: pick up your phone and dial (888) 920-6662. You are connected in under a minute.</p>
+      <p>There is nothing to drive to - it is a phone call. People ask where we are "based" relative to town, so here is the easy way to picture it. Start at {civic}. From there you would normally drive and wait to see someone. With us you skip all of that. From that spot, or anywhere else in {city}, the route is the same: pick up your phone and dial (888) 920-6662. You are connected in under a minute.</p>
 
       <h2>What Do I Do If I Need a Reading Right Now in {city}?</h2>
       <p>Call. That's it. The line is open 24/7, including holidays and the middle of the night. You will reach a real, hand-vetted reader, not a recording. First minute is $1. Hang up the second you have what you need.</p>
@@ -322,7 +322,7 @@ TPL = """<!doctype html>
   <section class="section-soft" id="offer">
     <div class="container" style="text-align: center;">
       <h2>Speak With a Live Phone Psychic in {city} Right Now</h2>
-      <p>Try us out at our introductory rate — get comfortable with your phone psychic before you commit to more time.</p>
+      <p>Try us out at our introductory rate - get comfortable with your phone psychic before you commit to more time.</p>
       <div class="pricing-card">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <span class="price">$1<small>/min</small></span>
@@ -349,7 +349,7 @@ TPL = """<!doctype html>
         </blockquote>
         <blockquote>
           <span class="stars" aria-hidden="true">★★★★★</span>
-          <p>"$1 a minute to try it and hang up whenever — no reason not to. Honest and kind at the same time, and it's the reason I finally made the decision I'd been avoiding."</p>
+          <p>"$1 a minute to try it and hang up whenever - no reason not to. Honest and kind at the same time, and it's the reason I finally made the decision I'd been avoiding."</p>
           <footer class="quote-author">
             <img src="assets/img/proof-02.jpg" alt="Verified caller from {city} {state}" width="48" height="48" loading="lazy">
             <cite>Marcus, {city} {state}</cite>
@@ -361,11 +361,11 @@ TPL = """<!doctype html>
 
   <section class="section-soft faq">
     <div class="container">
-      <h2>{city} Phone Psychic Readings — Frequently Asked Questions</h2>
+      <h2>{city} Phone Psychic Readings - Frequently Asked Questions</h2>
       <details><summary>Who's the best psychic near me in {city}?</summary><p>The best one is the one matched to your question. Call (888) 920-6662 and our team connects you with a hand-vetted reader in under 60 seconds, from any {city} neighborhood.</p></details>
       <details><summary>Can I get a psychic reading in {city} tonight?</summary><p>Yes. The line is open 24 hours a day, every day, including holidays. Any {city} zip code, any hour. First minute is $1.</p></details>
       <details><summary>How much does a reading cost?</summary><p>First-time callers pay $1/min, or 15 minutes for $10. No minimum, and you can hang up anytime.</p></details>
-      <details><summary>Do I have to drive anywhere?</summary><p>No. It's a phone service. You stay home in {city} and call — no drive, no parking, no appointment.</p></details>
+      <details><summary>Do I have to drive anywhere?</summary><p>No. It's a phone service. You stay home in {city} and call - no drive, no parking, no appointment.</p></details>
       <details><summary>Is my call private?</summary><p>Yes. You call from wherever you are, the reading is confidential, and there's a 100% satisfaction promise.</p></details>
     </div>
   </section>

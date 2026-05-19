@@ -59,7 +59,7 @@ cat > /tmp/bk_localblock.html <<'EOF'
   <section class="section-soft">
     <div class="container" style="max-width: 860px;">
       <h2>Find Phone Psychic Readers in Burbank</h2>
-      <p>Our Burbank Google Business Profile and verified reviews are tied to this location. Readings are delivered by phone — here's the listing so you know exactly who you're calling.</p>
+      <p>Our Burbank Google Business Profile and verified reviews are tied to this location. Readings are delivered by phone - here's the listing so you know exactly who you're calling.</p>
       <address class="nap-block">
         <strong>Phone Psychic Readers</strong><br>
         365 W Alameda Ave, Burbank, CA 91506<br>
@@ -68,7 +68,7 @@ cat > /tmp/bk_localblock.html <<'EOF'
         Open 24 hours &middot; 7 days a week &middot; <strong>4.4&#9733;</strong> from 7 Google reviews
       </address>
       <div class="map-embed">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3301.254311816029!2d-118.310033!3d34.1654151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808ffb83ce468f01%3A0x2aed45fb738f28e6!2sPhone%20Psychic%20Readers%20-%20tarot%20card%20readings%20%7C%20horoscope%20astrology%20love%20%26%20more!5e0!3m2!1sen!2sus!4v1779170493480!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Phone Psychic Readers — Burbank, CA"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3301.254311816029!2d-118.310033!3d34.1654151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808ffb83ce468f01%3A0x2aed45fb738f28e6!2sPhone%20Psychic%20Readers%20-%20tarot%20card%20readings%20%7C%20horoscope%20astrology%20love%20%26%20more!5e0!3m2!1sen!2sus!4v1779170493480!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Phone Psychic Readers - Burbank, CA"></iframe>
       </div>
     </div>
   </section>
@@ -77,7 +77,7 @@ EOF
 count=0
 while IFS='|' read -r OUT SVC SRC CAT CATSLUG; do
   [ -z "${OUT:-}" ] && continue
-  [ -f "$S/$SRC.html" ] || { echo "MISSING SOURCE $SRC.html — skipped $OUT"; continue; }
+  [ -f "$S/$SRC.html" ] || { echo "MISSING SOURCE $SRC.html - skipped $OUT"; continue; }
 
   cat > /tmp/bk_crumb.html <<EOF
   <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -99,15 +99,15 @@ EOF
 </script>
 EOF
 
-  # Inline "People Also Ask — Burbank" supporting content (unique per service+city)
+  # Inline "People Also Ask - Burbank" supporting content (unique per service+city)
   cat > /tmp/bk_paa.html <<EOF
   <section class="section-soft faq">
     <div class="container" style="max-width: 860px;">
-      <h2>People Also Ask — $SVC in Burbank</h2>
+      <h2>People Also Ask - $SVC in Burbank</h2>
       <details><summary>How much does a $SVC in Burbank cost?</summary><p>First-time Burbank callers pay \$1 per minute, or 15 minutes for \$10. There's no minimum, you can hang up anytime, and a 100% satisfaction promise stands behind every call.</p></details>
-      <details><summary>Can I get a $SVC in Burbank tonight?</summary><p>Yes. The line is open 24 hours a day, every day, including holidays. Call from any Burbank zip code — Magnolia Park to the Rancho — and you're connected to a hand-vetted reader in under 60 seconds.</p></details>
-      <details><summary>Do I have to drive anywhere in Burbank for a $SVC?</summary><p>No. It's a phone service. You stay home in Burbank and call — no traffic on Olive, no parking at the Town Center, no appointment.</p></details>
-      <details><summary>Is a $SVC accurate over the phone?</summary><p>Yes. A phone reading is often clearer — no visual distractions, so the reader focuses entirely on your voice and energy. You get the patterns at work and the likely direction, not a fixed fate.</p></details>
+      <details><summary>Can I get a $SVC in Burbank tonight?</summary><p>Yes. The line is open 24 hours a day, every day, including holidays. Call from any Burbank zip code - Magnolia Park to the Rancho - and you're connected to a hand-vetted reader in under 60 seconds.</p></details>
+      <details><summary>Do I have to drive anywhere in Burbank for a $SVC?</summary><p>No. It's a phone service. You stay home in Burbank and call - no traffic on Olive, no parking at the Town Center, no appointment.</p></details>
+      <details><summary>Is a $SVC accurate over the phone?</summary><p>Yes. A phone reading is often clearer - no visual distractions, so the reader focuses entirely on your voice and energy. You get the patterns at work and the likely direction, not a fixed fate.</p></details>
       <details><summary>How do I start a $SVC in Burbank?</summary><p>Call (888) 920-6662, tell our team what's on your mind, and we match you with the right hand-vetted reader for your question. First minute is \$1.</p></details>
     </div>
   </section>
@@ -118,7 +118,7 @@ EOF
   <section class="section-soft">
     <div class="container" style="max-width: 860px;">
       <h2>$SVC Across Burbank</h2>
-      <p>We take $SVC calls from every part of Burbank — Magnolia Park, Downtown and Burbank Village, the Media District by Warner Bros. and Disney, the Rancho Equestrian District, the hillside above DeBell Golf Club, Starlight Hills, the Cabrini Villas, and the Toluca Lake side. Every zip code is covered: 91501, 91502, 91503, 91504, 91505, 91506, 91507, 91508, 91510, 91521, 91522, 91523, and 91526. There's nothing to drive to — no traffic on Olive Avenue, no parking at the Burbank Town Center, no wait near Hollywood Burbank Airport. Pick up the phone and you're connected to a hand-vetted reader in under 60 seconds, 24/7. Back to <a href="$CATSLUG.html">$CAT in Burbank</a> or the <a href="burbank-phone-psychic.html">Burbank phone psychic</a> hub.</p>
+      <p>We take $SVC calls from every part of Burbank - Magnolia Park, Downtown and Burbank Village, the Media District by Warner Bros. and Disney, the Rancho Equestrian District, the hillside above DeBell Golf Club, Starlight Hills, the Cabrini Villas, and the Toluca Lake side. Every zip code is covered: 91501, 91502, 91503, 91504, 91505, 91506, 91507, 91508, 91510, 91521, 91522, 91523, and 91526. There's nothing to drive to - no traffic on Olive Avenue, no parking at the Burbank Town Center, no wait near Hollywood Burbank Airport. Pick up the phone and you're connected to a hand-vetted reader in under 60 seconds, 24/7. Back to <a href="$CATSLUG.html">$CAT in Burbank</a> or the <a href="burbank-phone-psychic.html">Burbank phone psychic</a> hub.</p>
     </div>
   </section>
 EOF
@@ -129,7 +129,7 @@ EOF
 { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
   { "@type": "Question", "name": "How much does a $SVC in Burbank cost?", "acceptedAnswer": { "@type": "Answer", "text": "First-time Burbank callers pay \$1 per minute, or 15 minutes for \$10. There is no minimum, you can hang up anytime, and a 100% satisfaction promise stands behind every call." } },
   { "@type": "Question", "name": "Can I get a $SVC in Burbank tonight?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The line is open 24 hours a day, every day, including holidays. Call from any Burbank zip code and you are connected to a hand-vetted reader in under 60 seconds." } },
-  { "@type": "Question", "name": "Do I have to drive anywhere in Burbank for a $SVC?", "acceptedAnswer": { "@type": "Answer", "text": "No. It is a phone service. You stay home in Burbank and call — no traffic on Olive Avenue, no parking at the Burbank Town Center, no appointment." } },
+  { "@type": "Question", "name": "Do I have to drive anywhere in Burbank for a $SVC?", "acceptedAnswer": { "@type": "Answer", "text": "No. It is a phone service. You stay home in Burbank and call - no traffic on Olive Avenue, no parking at the Burbank Town Center, no appointment." } },
   { "@type": "Question", "name": "Is a $SVC accurate over the phone?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A phone reading is often clearer with no visual distractions; the reader focuses entirely on your voice and energy." } },
   { "@type": "Question", "name": "How do I start a $SVC in Burbank?", "acceptedAnswer": { "@type": "Answer", "text": "Call (888) 920-6662, tell our team what is on your mind, and we match you with the right hand-vetted reader. First minute is \$1." } }
 ] }
@@ -150,8 +150,8 @@ EOF
     /<title>/ && !td { print "<title>" svc " in Burbank, CA | Live by Phone 24/7 from $1/Min</title>"; td=1; next }
     /rel="canonical"/ && !cn { print "<link rel=\"canonical\" href=\"https://www.phonepsychicreaders.com/" out ".html\">"; cn=1; next }
     /<\/head>/ && !bd { emit(bc); emit(faq); print; bd=1; next }
-    /<h1>/ && !hd { print "<h1>" svc " in Burbank, CA — Live, 24/7, From $1/Min</h1>"; hd=1; next }
-    /<p class="lede">/ && !ld { print "        <p class=\"lede\">A <strong>" svc " in Burbank</strong> gets you real, focused answers by phone — no drive down Olive Avenue, no wait at the Burbank Town Center. Every reader on our line is hand-vetted by our master psychics. Connect in under 60 seconds, 24/7, from Magnolia Park to the Rancho. Your first minute is $1 and you can hang up anytime.</p>"; ld=1; next }
+    /<h1>/ && !hd { print "<h1>" svc " in Burbank, CA - Live, 24/7, From $1/Min</h1>"; hd=1; next }
+    /<p class="lede">/ && !ld { print "        <p class=\"lede\">A <strong>" svc " in Burbank</strong> gets you real, focused answers by phone - no drive down Olive Avenue, no wait at the Burbank Town Center. Every reader on our line is hand-vetted by our master psychics. Connect in under 60 seconds, 24/7, from Magnolia Park to the Rancho. Your first minute is $1 and you can hang up anytime.</p>"; ld=1; next }
     /<main id="main">/ && !md { print; emit(crumb); md=1; next }
     skipfaq { if ($0 ~ /<\/section>/) skipfaq=0; next }
     /<section[^>]*faq/ && !fqdone { skipfaq=1; fqdone=1; next }

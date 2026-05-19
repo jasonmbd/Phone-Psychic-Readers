@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Localized Burbank service pages: consistent localized SHELL (loc_shell.tpl)
 # + UNIQUE per-service body authored in scripts/bodies/<slug>.html.
-# A slug is only (re)generated if its body file exists — fill bodies in
+# A slug is only (re)generated if its body file exists - fill bodies in
 # batches; pages without a body file are left untouched.
 # Row: SLUG|Service|service-lowercase|Category|category-slug
 set -euo pipefail
@@ -63,9 +63,9 @@ while IFS='|' read -r SLUG SVC SVCL CAT CATSLUG; do
   [ -z "${SLUG:-}" ] && continue
   if [ ! -f "$BD/$SLUG.html" ]; then skipped=$((skipped+1)); continue; fi
   TITLE="$SVC in Burbank, CA | Live by Phone 24/7 from \$1/Min"
-  DESC="A $SVCL in Burbank, CA by phone — hand-vetted readers answer 24/7 from Magnolia Park to the Rancho. First minute \$1, 15 minutes for \$10, hang up anytime."
+  DESC="A $SVCL in Burbank, CA by phone - hand-vetted readers answer 24/7 from Magnolia Park to the Rancho. First minute \$1, 15 minutes for \$10, hang up anytime."
   KW="$SVCL burbank, $SVCL burbank ca, phone $SVCL burbank, psychic burbank"
-  LEDE="A <strong>$SVCL in Burbank</strong> by phone — hand-vetted readers, 24/7, from Magnolia Park to the Rancho. Connect in under 60 seconds. Your first minute is \$1 and you can hang up anytime."
+  LEDE="A <strong>$SVCL in Burbank</strong> by phone - hand-vetted readers, 24/7, from Magnolia Park to the Rancho. Connect in under 60 seconds. Your first minute is \$1 and you can hang up anytime."
   awk -v slug="$SLUG" -v svc="$SVC" -v svcl="$SVCL" -v cat="$CAT" -v catslug="$CATSLUG" \
       -v title="$TITLE" -v desc="$DESC" -v kw="$KW" -v lede="$LEDE" -v body="$BD/$SLUG.html" '
     { line=$0
