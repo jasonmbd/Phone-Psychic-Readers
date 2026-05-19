@@ -33,7 +33,18 @@ for src in src/*.html; do
     /<!--#include:footer-->/ {
       while ((getline line < ftr) > 0) print line; close(ftr); next
     }
-    { print }
+    {
+      # Click-to-call: linkify the displayed phone number in body text only.
+      # Skip <head>, <script>/JSON-LD, and lines already containing a tel: link.
+      if ($0 ~ /<head>/) inhead=1
+      if ($0 ~ /<script/) inscript=1
+      if (!inhead && !inscript && $0 !~ /tel:\+18889206662/) {
+        gsub(/\(888\) 920-6662/, "<a href=\"tel:+18889206662\">(888) 920-6662</a>")
+      }
+      print
+      if ($0 ~ /<\/head>/) inhead=0
+      if ($0 ~ /<\/script>/) inscript=0
+    }
   ' "$src" \
   | sed -e "s#assets/css/styles\.css\(?v=[0-9a-f]*\)\?#assets/css/styles.css?v=${CSS_V}#g" \
         -e "s#assets/js/main\.js\(?v=[0-9a-f]*\)\?#assets/js/main.js?v=${JS_V}#g" \
