@@ -124,15 +124,39 @@ EOF
   </section>
 EOF
 
+  # FAQPage JSON-LD for the localized PAA (replaces the source page's FAQ schema)
+  cat > /tmp/bk_faqjson.html <<EOF
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+  { "@type": "Question", "name": "How much does a $SVC in Burbank cost?", "acceptedAnswer": { "@type": "Answer", "text": "First-time Burbank callers pay \$1 per minute, or 15 minutes for \$10. There is no minimum, you can hang up anytime, and a 100% satisfaction promise stands behind every call." } },
+  { "@type": "Question", "name": "Can I get a $SVC in Burbank tonight?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The line is open 24 hours a day, every day, including holidays. Call from any Burbank zip code and you are connected to a hand-vetted reader in under 60 seconds." } },
+  { "@type": "Question", "name": "Do I have to drive anywhere in Burbank for a $SVC?", "acceptedAnswer": { "@type": "Answer", "text": "No. It is a phone service. You stay home in Burbank and call — no traffic on Olive Avenue, no parking at the Burbank Town Center, no appointment." } },
+  { "@type": "Question", "name": "Is a $SVC accurate over the phone?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A phone reading is often clearer with no visual distractions; the reader focuses entirely on your voice and energy." } },
+  { "@type": "Question", "name": "How do I start a $SVC in Burbank?", "acceptedAnswer": { "@type": "Answer", "text": "Call (888) 920-6662, tell our team what is on your mind, and we match you with the right hand-vetted reader. First minute is \$1." } }
+] }
+</script>
+EOF
+
   awk -v out="$OUT" -v svc="$SVC" \
-      -v crumb="/tmp/bk_crumb.html" -v bc="/tmp/bk_bcjson.html" \
+      -v crumb="/tmp/bk_crumb.html" -v bc="/tmp/bk_bcjson.html" -v faq="/tmp/bk_faqjson.html" \
       -v geo="/tmp/bk_geo.html" -v paa="/tmp/bk_paa.html" -v lb="/tmp/bk_localblock.html" '
+    function emit(f,   L){ while ((getline L < f) > 0) print L; close(f) }
+    # Drop the source page FAQPage JSON-LD block (we add a localized one)
+    /<script type="application\/ld\+json">/ {
+      blk=$0
+      while ((getline n) > 0) { blk=blk ORS n; if (n ~ /<\/script>/) break }
+      if (blk ~ /"@type":[ ]*"FAQPage"/) next
+      print blk; next
+    }
     /<title>/ && !td { print "<title>" svc " in Burbank, CA | Live by Phone 24/7 from $1/Min</title>"; td=1; next }
     /rel="canonical"/ && !cn { print "<link rel=\"canonical\" href=\"https://www.phonepsychicreaders.com/" out ".html\">"; cn=1; next }
-    /<\/head>/ && !bd { while ((getline L < bc) > 0) print L; close(bc); print; bd=1; next }
+    /<\/head>/ && !bd { emit(bc); emit(faq); print; bd=1; next }
     /<h1>/ && !hd { print "<h1>" svc " in Burbank, CA — Live, 24/7, From $1/Min</h1>"; hd=1; next }
-    /<main id="main">/ && !md { print; while ((getline L < crumb) > 0) print L; close(crumb); md=1; next }
-    /<!--#include:footer-->/ && !fd { while ((getline L < geo) > 0) print L; close(geo); print ""; while ((getline L < paa) > 0) print L; close(paa); print ""; while ((getline L < lb) > 0) print L; close(lb); print ""; print; fd=1; next }
+    /<p class="lede">/ && !ld { print "        <p class=\"lede\">A <strong>" svc " in Burbank</strong> gets you real, focused answers by phone — no drive down Olive Avenue, no wait at the Burbank Town Center. Every reader on our line is hand-vetted by our master psychics. Connect in under 60 seconds, 24/7, from Magnolia Park to the Rancho. Your first minute is $1 and you can hang up anytime.</p>"; ld=1; next }
+    /<main id="main">/ && !md { print; emit(crumb); md=1; next }
+    skipfaq { if ($0 ~ /<\/section>/) skipfaq=0; next }
+    /<section[^>]*faq/ && !fqdone { skipfaq=1; fqdone=1; next }
+    /<!--#include:footer-->/ && !fd { emit(geo); print ""; emit(paa); print ""; emit(lb); print ""; print; fd=1; next }
     { print }
   ' "$S/$SRC.html" > "$S/$OUT.html"
   echo "wrote $OUT.html (from $SRC)"
