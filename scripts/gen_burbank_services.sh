@@ -114,15 +114,25 @@ EOF
   </section>
 EOF
 
+  # Localized geo body section (city-named H2 + neighborhoods/ZIPs/landmarks + up-links)
+  cat > /tmp/bk_geo.html <<EOF
+  <section class="section-soft">
+    <div class="container" style="max-width: 860px;">
+      <h2>$SVC Across Burbank</h2>
+      <p>We take $SVC calls from every part of Burbank — Magnolia Park, Downtown and Burbank Village, the Media District by Warner Bros. and Disney, the Rancho Equestrian District, the hillside above DeBell Golf Club, Starlight Hills, the Cabrini Villas, and the Toluca Lake side. Every zip code is covered: 91501, 91502, 91503, 91504, 91505, 91506, 91507, 91508, 91510, 91521, 91522, 91523, and 91526. There's nothing to drive to — no traffic on Olive Avenue, no parking at the Burbank Town Center, no wait near Hollywood Burbank Airport. Pick up the phone and you're connected to a hand-vetted reader in under 60 seconds, 24/7. Back to <a href="$CATSLUG.html">$CAT in Burbank</a> or the <a href="burbank-phone-psychic.html">Burbank phone psychic</a> hub.</p>
+    </div>
+  </section>
+EOF
+
   awk -v out="$OUT" -v svc="$SVC" \
       -v crumb="/tmp/bk_crumb.html" -v bc="/tmp/bk_bcjson.html" \
-      -v paa="/tmp/bk_paa.html" -v lb="/tmp/bk_localblock.html" '
+      -v geo="/tmp/bk_geo.html" -v paa="/tmp/bk_paa.html" -v lb="/tmp/bk_localblock.html" '
     /<title>/ && !td { print "<title>" svc " in Burbank, CA | Live by Phone 24/7 from $1/Min</title>"; td=1; next }
     /rel="canonical"/ && !cn { print "<link rel=\"canonical\" href=\"https://www.phonepsychicreaders.com/" out ".html\">"; cn=1; next }
     /<\/head>/ && !bd { while ((getline L < bc) > 0) print L; close(bc); print; bd=1; next }
     /<h1>/ && !hd { print "<h1>" svc " in Burbank, CA — Live, 24/7, From $1/Min</h1>"; hd=1; next }
     /<main id="main">/ && !md { print; while ((getline L < crumb) > 0) print L; close(crumb); md=1; next }
-    /<!--#include:footer-->/ && !fd { while ((getline L < paa) > 0) print L; close(paa); print ""; while ((getline L < lb) > 0) print L; close(lb); print ""; print; fd=1; next }
+    /<!--#include:footer-->/ && !fd { while ((getline L < geo) > 0) print L; close(geo); print ""; while ((getline L < paa) > 0) print L; close(paa); print ""; while ((getline L < lb) > 0) print L; close(lb); print ""; print; fd=1; next }
     { print }
   ' "$S/$SRC.html" > "$S/$OUT.html"
   echo "wrote $OUT.html (from $SRC)"
