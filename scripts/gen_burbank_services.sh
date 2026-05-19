@@ -1,28 +1,48 @@
 #!/usr/bin/env bash
-# Core 30 service tier (Burbank / Psychic category).
-# Clones national service pages, localizes title/H1/canonical, injects
-# breadcrumb nav + BreadcrumbList JSON-LD + Burbank NAP block, and links
-# back up to burbank-psychic.html -> burbank-phone-psychic.html.
+# Core 30 Burbank service tier generator (generic).
+# Row format: OUTSLUG|Service Name|SOURCE national slug|Category label|category slug
+# Clones SOURCE national page, localizes title/H1/canonical, injects
+# breadcrumb nav + BreadcrumbList JSON-LD + Burbank NAP block, links up.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 S=src
 
-# nationalslug|Service Name|CATEGORY label|category slug
 read -r -d '' ROWS <<'DATA' || true
-psychic-love-readings-by-phone|Love Psychic Reading|Psychic|burbank-psychic
-relationship-psychic-reading|Relationship Psychic Reading|Psychic|burbank-psychic
-career-psychic-reading|Career Psychic Reading|Psychic|burbank-psychic
-intuitive-psychic-reading|Intuitive Psychic Reading|Psychic|burbank-psychic
-clairvoyant-reading|Clairvoyant Reading|Psychic|burbank-psychic
-aura-reading|Aura Reading|Psychic|burbank-psychic
-past-life-psychic-readings-by-phone|Past Life Reading|Psychic|burbank-psychic
-phone-tarot-reading|Tarot Card Reading|Psychic|burbank-psychic
-dream-interpretation-psychic-readings-phone|Dream Interpretation|Psychic|burbank-psychic
-energy-healing|Energy Healing|Psychic|burbank-psychic
-daily-horoscope-reading|Daily Horoscope|Psychic|burbank-psychic
+burbank-psychic-love-readings-by-phone|Love Psychic Reading|psychic-love-readings-by-phone|Psychic|burbank-psychic
+burbank-relationship-psychic-reading|Relationship Psychic Reading|relationship-psychic-reading|Psychic|burbank-psychic
+burbank-career-psychic-reading|Career Psychic Reading|career-psychic-reading|Psychic|burbank-psychic
+burbank-intuitive-psychic-reading|Intuitive Psychic Reading|intuitive-psychic-reading|Psychic|burbank-psychic
+burbank-clairvoyant-reading|Clairvoyant Reading|clairvoyant-reading|Psychic|burbank-psychic
+burbank-aura-reading|Aura Reading|aura-reading|Psychic|burbank-psychic
+burbank-past-life-psychic-readings-by-phone|Past Life Reading|past-life-psychic-readings-by-phone|Psychic|burbank-psychic
+burbank-phone-tarot-reading|Tarot Card Reading|phone-tarot-reading|Psychic|burbank-psychic
+burbank-dream-interpretation-psychic-readings-phone|Dream Interpretation|dream-interpretation-psychic-readings-phone|Psychic|burbank-psychic
+burbank-energy-healing|Energy Healing|energy-healing|Psychic|burbank-psychic
+burbank-daily-horoscope-reading|Daily Horoscope|daily-horoscope-reading|Psychic|burbank-psychic
+burbank-astrology-reading|Astrology Reading|horoscope-astrology-psychic-readings-by-phone|Astrologer|burbank-astrologer
+burbank-birth-chart-reading|Birth Chart Reading|birth-chart-reading|Astrologer|burbank-astrologer
+burbank-natal-chart-interpretation|Natal Chart Interpretation|birth-chart-reading|Astrologer|burbank-astrologer
+burbank-love-astrology-reading|Love Astrology Reading|love-astrology-reading|Astrologer|burbank-astrologer
+burbank-relationship-astrology-compatibility|Relationship Astrology Compatibility|astrology-compatibility-reading|Astrologer|burbank-astrologer
+burbank-career-astrology-reading|Career Astrology Reading|career-astrology-reading|Astrologer|burbank-astrologer
+burbank-astrology-consultation|Astrology Consultation|horoscope-astrology-psychic-readings-by-phone|Astrologer|burbank-astrologer
+burbank-marriage-astrology-reading|Marriage Astrology Reading|love-astrology-reading|Astrologer|burbank-astrologer
+burbank-astrology-reading-near-me|Astrology Reading Near Me|astrology-reading-near-me|Astrologer|burbank-astrologer
+burbank-numerology-reading|Numerology Reading|numerologist|Numerologist|burbank-numerologist
+burbank-life-path-number-reading|Life Path Number Reading|numerologist|Numerologist|burbank-numerologist
+burbank-love-numerology-reading|Love Numerology Reading|psychic-love-readings-by-phone|Numerologist|burbank-numerologist
+burbank-career-numerology-reading|Career Numerology Reading|money-prosperity-psychic-readings|Numerologist|burbank-numerologist
+burbank-personal-numerology-chart|Personal Numerology Chart|numerologist|Numerologist|burbank-numerologist
+burbank-numerology-consultation|Numerology Consultation|numerologist|Numerologist|burbank-numerologist
+burbank-numerology-guidance-session|Numerology Guidance Session|numerologist|Numerologist|burbank-numerologist
+burbank-soulmate-reading|Soulmate Reading|soulmate-reading|Fortune Telling Services|burbank-fortune-telling-services
+burbank-twin-flame-reading|Twin Flame Reading|twin-flame-reading|Fortune Telling Services|burbank-fortune-telling-services
+burbank-life-path-psychic-reading|Life Path Psychic Reading|spiritual-guidance-reading|Fortune Telling Services|burbank-fortune-telling-services
+burbank-spiritual-guidance-reading|Spiritual Guidance Reading|spiritual-guidance-reading|Fortune Telling Services|burbank-fortune-telling-services
+burbank-private-psychic-consultation|Private Psychic Consultation|psychic-reading|Fortune Telling Services|burbank-fortune-telling-services
+burbank-psychic-reading-near-me|Psychic Reading Near Me|psychic-reading-near-me|Fortune Telling Services|burbank-fortune-telling-services
 DATA
 
-# Static Burbank local block (no '&' to keep sed/awk safe; iframe uses %26)
 cat > /tmp/bk_localblock.html <<'EOF'
   <!-- BURBANK-ONLY local block (above global footer; swap per GBP city) -->
   <section class="section-soft">
@@ -44,11 +64,10 @@ cat > /tmp/bk_localblock.html <<'EOF'
 EOF
 
 count=0
-while IFS='|' read -r NAT SVC CAT CATSLUG; do
-  [ -z "${NAT:-}" ] && continue
-  OUT="$S/burbank-$NAT.html"
+while IFS='|' read -r OUT SVC SRC CAT CATSLUG; do
+  [ -z "${OUT:-}" ] && continue
+  [ -f "$S/$SRC.html" ] || { echo "MISSING SOURCE $SRC.html — skipped $OUT"; continue; }
 
-  # per-service breadcrumb nav
   cat > /tmp/bk_crumb.html <<EOF
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <div class="container">
@@ -57,7 +76,6 @@ while IFS='|' read -r NAT SVC CAT CATSLUG; do
   </nav>
 EOF
 
-  # per-service BreadcrumbList JSON-LD
   cat > /tmp/bk_bcjson.html <<EOF
 <script type="application/ld+json">
 { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -65,22 +83,22 @@ EOF
   { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://www.phonepsychicreaders.com/locations.html" },
   { "@type": "ListItem", "position": 3, "name": "Burbank, CA", "item": "https://www.phonepsychicreaders.com/burbank-phone-psychic.html" },
   { "@type": "ListItem", "position": 4, "name": "$CAT", "item": "https://www.phonepsychicreaders.com/$CATSLUG.html" },
-  { "@type": "ListItem", "position": 5, "name": "$SVC", "item": "https://www.phonepsychicreaders.com/burbank-$NAT.html" }
+  { "@type": "ListItem", "position": 5, "name": "$SVC", "item": "https://www.phonepsychicreaders.com/$OUT.html" }
 ] }
 </script>
 EOF
 
-  awk -v nat="$NAT" -v svc="$SVC" \
+  awk -v out="$OUT" -v svc="$SVC" \
       -v crumb="/tmp/bk_crumb.html" -v bc="/tmp/bk_bcjson.html" -v lb="/tmp/bk_localblock.html" '
     /<title>/ && !td { print "<title>" svc " in Burbank, CA | Live by Phone 24/7 from $1/Min</title>"; td=1; next }
-    /rel="canonical"/ && !cd { print "<link rel=\"canonical\" href=\"https://www.phonepsychicreaders.com/burbank-" nat ".html\">"; cd=1; next }
+    /rel="canonical"/ && !cn { print "<link rel=\"canonical\" href=\"https://www.phonepsychicreaders.com/" out ".html\">"; cn=1; next }
     /<\/head>/ && !bd { while ((getline L < bc) > 0) print L; close(bc); print; bd=1; next }
     /<h1>/ && !hd { print "<h1>" svc " in Burbank, CA — Live, 24/7, From $1/Min</h1>"; hd=1; next }
     /<main id="main">/ && !md { print; while ((getline L < crumb) > 0) print L; close(crumb); md=1; next }
     /<!--#include:footer-->/ && !fd { while ((getline L < lb) > 0) print L; close(lb); print ""; print; fd=1; next }
     { print }
-  ' "$S/$NAT.html" > "$OUT"
-  echo "wrote burbank-$NAT.html"
+  ' "$S/$SRC.html" > "$S/$OUT.html"
+  echo "wrote $OUT.html (from $SRC)"
   count=$((count+1))
 done <<< "$ROWS"
 echo "done $count service pages"
