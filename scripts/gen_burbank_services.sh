@@ -1,24 +1,36 @@
 #!/usr/bin/env bash
-# Core 30 Burbank service tier generator (generic).
-# Row format: OUTSLUG|Service Name|SOURCE national slug|Category label|category slug
-# Clones SOURCE national page, localizes title/H1/canonical, injects
-# breadcrumb nav + BreadcrumbList JSON-LD + Burbank NAP block, links up.
+# Core 30 Burbank service tier generator (generic) + inline PAA supporting content.
+# Row: OUTSLUG|Service Name|SOURCE national slug|Category label|category slug
 set -euo pipefail
 cd "$(dirname "$0")/.."
 S=src
 
 read -r -d '' ROWS <<'DATA' || true
+burbank-psychic-reading|Psychic Reading|psychic-reading|Psychic|burbank-psychic
 burbank-psychic-love-readings-by-phone|Love Psychic Reading|psychic-love-readings-by-phone|Psychic|burbank-psychic
 burbank-relationship-psychic-reading|Relationship Psychic Reading|relationship-psychic-reading|Psychic|burbank-psychic
 burbank-career-psychic-reading|Career Psychic Reading|career-psychic-reading|Psychic|burbank-psychic
 burbank-intuitive-psychic-reading|Intuitive Psychic Reading|intuitive-psychic-reading|Psychic|burbank-psychic
-burbank-clairvoyant-reading|Clairvoyant Reading|clairvoyant-reading|Psychic|burbank-psychic
+burbank-clairvoyant-reading|Clairvoyant Psychic Reading|clairvoyant-reading|Psychic|burbank-psychic
 burbank-aura-reading|Aura Reading|aura-reading|Psychic|burbank-psychic
-burbank-past-life-psychic-readings-by-phone|Past Life Reading|past-life-psychic-readings-by-phone|Psychic|burbank-psychic
+burbank-past-life-psychic-readings-by-phone|Past Life Psychic Reading|past-life-psychic-readings-by-phone|Psychic|burbank-psychic
 burbank-phone-tarot-reading|Tarot Card Reading|phone-tarot-reading|Psychic|burbank-psychic
 burbank-dream-interpretation-psychic-readings-phone|Dream Interpretation|dream-interpretation-psychic-readings-phone|Psychic|burbank-psychic
 burbank-energy-healing|Energy Healing|energy-healing|Psychic|burbank-psychic
 burbank-daily-horoscope-reading|Daily Horoscope|daily-horoscope-reading|Psychic|burbank-psychic
+burbank-tarot-reading-near-me|Tarot Reading Near Me|tarot-reading-near-me|Psychic|burbank-psychic
+burbank-love-tarot-reading|Love Tarot Reading|love-tarot-reading|Psychic|burbank-psychic
+burbank-career-tarot-reading|Career Tarot Reading|career-tarot-reading|Psychic|burbank-psychic
+burbank-relationship-tarot-reading|Relationship Tarot Reading|relationship-tarot-reading|Psychic|burbank-psychic
+burbank-future-tarot-reading|Future Tarot Reading|future-tarot-reading|Psychic|burbank-psychic
+burbank-psychic-tarot-reading|Psychic Tarot Reading|phone-tarot-reading|Psychic|burbank-psychic
+burbank-annual-horoscope-reading|Annual Horoscope|annual-horoscope-reading|Psychic|burbank-psychic
+burbank-astrology-advice|Astrology Advice|astrology-advice|Psychic|burbank-psychic
+burbank-life-coaching|Life Coaching|life-coaching|Psychic|burbank-psychic
+burbank-astrology-report|Astrology Report|horoscope-astrology-psychic-readings-by-phone|Psychic|burbank-psychic
+burbank-astrology-horoscope-readings|Astrology Horoscope Readings|horoscope-astrology-psychic-readings-by-phone|Psychic|burbank-psychic
+burbank-phone-psychic-service|Phone Psychic|phone-psychic|Psychic|burbank-psychic
+burbank-psychic-readings-tarot-card|Psychic Readings and Tarot Card|phone-tarot-reading|Psychic|burbank-psychic
 burbank-astrology-reading|Astrology Reading|horoscope-astrology-psychic-readings-by-phone|Astrologer|burbank-astrologer
 burbank-birth-chart-reading|Birth Chart Reading|birth-chart-reading|Astrologer|burbank-astrologer
 burbank-natal-chart-interpretation|Natal Chart Interpretation|birth-chart-reading|Astrologer|burbank-astrologer
@@ -88,14 +100,29 @@ EOF
 </script>
 EOF
 
+  # Inline "People Also Ask — Burbank" supporting content (unique per service+city)
+  cat > /tmp/bk_paa.html <<EOF
+  <section class="section-soft faq">
+    <div class="container" style="max-width: 860px;">
+      <h2>People Also Ask — $SVC in Burbank</h2>
+      <details><summary>How much does a $SVC in Burbank cost?</summary><p>First-time Burbank callers pay \$1 per minute, or 15 minutes for \$10. There's no minimum, you can hang up anytime, and a 100% satisfaction promise stands behind every call.</p></details>
+      <details><summary>Can I get a $SVC in Burbank tonight?</summary><p>Yes. The line is open 24 hours a day, every day, including holidays. Call from any Burbank zip code — Magnolia Park to the Rancho — and you're connected to a hand-vetted reader in under 60 seconds.</p></details>
+      <details><summary>Do I have to drive anywhere in Burbank for a $SVC?</summary><p>No. It's a phone service. You stay home in Burbank and call — no traffic on Olive, no parking at the Town Center, no appointment.</p></details>
+      <details><summary>Is a $SVC accurate over the phone?</summary><p>Yes. A phone reading is often clearer — no visual distractions, so the reader focuses entirely on your voice and energy. You get the patterns at work and the likely direction, not a fixed fate.</p></details>
+      <details><summary>How do I start a $SVC in Burbank?</summary><p>Call (888) 920-6662, tell our team what's on your mind, and we match you with the right hand-vetted reader for your question. First minute is \$1.</p></details>
+    </div>
+  </section>
+EOF
+
   awk -v out="$OUT" -v svc="$SVC" \
-      -v crumb="/tmp/bk_crumb.html" -v bc="/tmp/bk_bcjson.html" -v lb="/tmp/bk_localblock.html" '
+      -v crumb="/tmp/bk_crumb.html" -v bc="/tmp/bk_bcjson.html" \
+      -v paa="/tmp/bk_paa.html" -v lb="/tmp/bk_localblock.html" '
     /<title>/ && !td { print "<title>" svc " in Burbank, CA | Live by Phone 24/7 from $1/Min</title>"; td=1; next }
     /rel="canonical"/ && !cn { print "<link rel=\"canonical\" href=\"https://www.phonepsychicreaders.com/" out ".html\">"; cn=1; next }
     /<\/head>/ && !bd { while ((getline L < bc) > 0) print L; close(bc); print; bd=1; next }
     /<h1>/ && !hd { print "<h1>" svc " in Burbank, CA — Live, 24/7, From $1/Min</h1>"; hd=1; next }
     /<main id="main">/ && !md { print; while ((getline L < crumb) > 0) print L; close(crumb); md=1; next }
-    /<!--#include:footer-->/ && !fd { while ((getline L < lb) > 0) print L; close(lb); print ""; print; fd=1; next }
+    /<!--#include:footer-->/ && !fd { while ((getline L < paa) > 0) print L; close(paa); print ""; while ((getline L < lb) > 0) print L; close(lb); print ""; print; fd=1; next }
     { print }
   ' "$S/$SRC.html" > "$S/$OUT.html"
   echo "wrote $OUT.html (from $SRC)"
