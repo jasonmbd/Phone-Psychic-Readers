@@ -69,3 +69,8 @@ for src in src/*.html; do
 done
 
 echo "Done. $count page(s) built."
+
+# --- Auto-regenerate sitemap.xml + robots.txt ---
+if [ -f scripts/gen_sitemap.sh ]; then
+  bash scripts/gen_sitemap.sh
+fi
