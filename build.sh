@@ -63,6 +63,7 @@ for src in src/*.html; do
   ' "$src" \
   | sed -e "s#assets/css/styles\.css\(?v=[0-9a-f]*\)\?#assets/css/styles.css?v=${CSS_V}#g" \
         -e "s#assets/js/main\.js\(?v=[0-9a-f]*\)\?#assets/js/main.js?v=${JS_V}#g" \
+  | awk -f scripts/inject_og.awk \
   > "$out"
   echo "built $out"
   count=$((count+1))
