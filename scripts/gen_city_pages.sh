@@ -49,10 +49,12 @@ while IFS='|' read -r CITY SLUG STATE COUNTY REGION HOOK CIVIC HOODS ZIPS LANDMA
   [ -z "${CITY:-}" ] && continue
   CITY_L="$(echo "$CITY" | tr '[:upper:]' '[:lower:]')"
   STATE_L="$(echo "$STATE" | tr '[:upper:]' '[:lower:]')"
+  CITY_URL="$(echo "$CITY" | sed 's/ /+/g; s/ñ/n/g; s/Ñ/N/g')"
   page="$TPL"
   page="${page//\{\{SLUG\}\}/$SLUG}"
   page="${page//\{\{CITY_L\}\}/$CITY_L}"
   page="${page//\{\{STATE_L\}\}/$STATE_L}"
+  page="${page//\{\{CITY_URL\}\}/$CITY_URL}"
   page="${page//\{\{CITY\}\}/$CITY}"
   page="${page//\{\{STATE\}\}/$STATE}"
   page="${page//\{\{COUNTY\}\}/$COUNTY}"
