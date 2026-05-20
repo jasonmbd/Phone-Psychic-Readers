@@ -29,12 +29,38 @@ cd "$(dirname "$0")/.."
 
 BASE="https://www.phonepsychicreaders.com"
 
+# --- Build BLOG_POSTS set from blog.html (canonical source of truth) ---
+# blog.html lists every blog post inside <li class="post-card"> entries.
+# Reading from that index means new posts auto-route to post-sitemap.xml
+# the moment they're added to the blog page - no prefix-pattern guessing.
+declare -A BLOG_POSTS
+if [ -f blog.html ]; then
+  while IFS= read -r href; do
+    [ -n "$href" ] && BLOG_POSTS["$href"]=1
+  done < <(awk '
+    /<li class="post-card"/{ p=1; next }
+    p && /href="/ {
+      if (match($0, /href="[a-z0-9-]+\.html"/)) {
+        hr=substr($0, RSTART, RLENGTH)
+        gsub(/href="|"/, "", hr)
+        print hr
+        p=0
+      }
+    }
+  ' blog.html)
+fi
+
 # --- Bucket each *.html into exactly one content type ---
 # Per-city silos drill down into their own sub-sitemap so GSC reports
 # indexing status per city, not in one 245-URL bucket.
 classify() {
   local f="$1" slug
   slug="${f%.html}"
+  # Posts: anything listed in blog.html's <li class="post-card"> grid.
+  # Checked before pattern rules so a post-card slug always wins, even
+  # if it would otherwise look like a service hub (e.g.
+  # phone-psychic-questions-and-answers.html).
+  if [ -n "${BLOG_POSTS[$f]:-}" ]; then echo post; return; fi
   case "$slug" in
     404) echo skip ;;
     index|about|contact|privacy|terms|locations|blog) echo page ;;
@@ -46,7 +72,6 @@ classify() {
     universal-city-*) echo universal-city ;;
     sun-valley-*) echo sun-valley ;;
     arcana-*|*-tarot-card-meaning|*-tarot-card-meaning-*) echo tarot ;;
-    whos-*|what-*|how-*|why-*|when-*) echo post ;;
     psychic|astrologer|numerologist|fortune-telling-services) echo category ;;
     *) echo service ;;
   esac
