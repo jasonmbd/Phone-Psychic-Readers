@@ -16,7 +16,7 @@ TOUCHING=(glendale north-hollywood toluca-lake universal-city sun-valley)
 rewire_one_file() {
   local CITY="$1" FILE="$2"
   # Find every href="X.html" in the file, where X is a plain slug (no "/", no http)
-  # If a file ${CITY}-${X}.html exists in cwd AND X does not already start with ${CITY}-
+  # If a file ${CITY}-${X}.html exists in src/ AND X does not already start with ${CITY}-
   # AND X is not a global/system page, rewrite href="X.html" -> href="${CITY}-X.html"
   local hrefs
   hrefs=$(grep -oE 'href="[a-z0-9-]+\.html"' "$FILE" | sort -u || true)
@@ -32,9 +32,8 @@ rewire_one_file() {
     case "$slug" in
       ${CITY}-*) continue ;;
     esac
-    # only rewire if the city-prefixed file exists
-    if [ -f "${CITY}-${slug}.html" ]; then
-      # rewrite this exact href occurrence
+    # only rewire if the city-prefixed file exists in src/
+    if [ -f "src/${CITY}-${slug}.html" ]; then
       sed -i "s|href=\"${slug}\.html\"|href=\"${CITY}-${slug}.html\"|g" "$FILE"
       changed=$((changed+1))
     fi
@@ -44,12 +43,12 @@ rewire_one_file() {
 
 for CITY in "${TOUCHING[@]}"; do
   echo "--- $CITY ---"
-  # 4 category pages + 1 landing
+  # 4 category pages + 1 landing, all in src/
   for CAT in psychic astrologer numerologist fortune-telling-services; do
-    F="${CITY}-${CAT}.html"
+    F="src/${CITY}-${CAT}.html"
     [ -f "$F" ] && rewire_one_file "$CITY" "$F"
   done
-  LF="${CITY}-phone-psychic.html"
+  LF="src/${CITY}-phone-psychic.html"
   [ -f "$LF" ] && rewire_one_file "$CITY" "$LF"
 done
 
