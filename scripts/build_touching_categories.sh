@@ -15,7 +15,9 @@ S=src
 awk '/^DATA$/{f=!f;next} f' scripts/gen_city_pages.sh > /tmp/city_data.txt
 
 get_field() {
-  awk -F'|' -v slug="$1" -v f="$2" '$2==slug{print $f; exit}' /tmp/city_data.txt
+  # Data field 2 is the full slug e.g. "sun-valley-phone-psychic";
+  # our $1 here is the short city slug e.g. "sun-valley".
+  awk -F'|' -v slug="$1-phone-psychic" -v f="$2" '$2==slug{print $f; exit}' /tmp/city_data.txt
 }
 
 # --- Service grids per GBP category (links to national hubs for now) ---
