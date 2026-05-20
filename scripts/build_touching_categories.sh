@@ -12,7 +12,8 @@ TOUCHING="glendale north-hollywood toluca-lake universal-city sun-valley"
 S=src
 
 # --- Extract city data from gen_city_pages.sh DATA block ---
-awk '/^DATA$/{f=!f;next} f' scripts/gen_city_pages.sh > /tmp/city_data.txt
+# Heredoc opens with "<<'DATA'" (not bare DATA) and closes with bare ^DATA$.
+awk "/<<'DATA'/{f=1;next} /^DATA\$/{f=0} f" scripts/gen_city_pages.sh > /tmp/city_data.txt
 
 get_field() {
   # Data field 2 is the full slug e.g. "sun-valley-phone-psychic";
