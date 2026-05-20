@@ -10,9 +10,10 @@ cd "$(dirname "$0")"
 
 HEADER="partials/header.html"
 FOOTER="partials/footer.html"
+GTM_HEAD="partials/gtm-head.html"
 
-if [[ ! -f "$HEADER" || ! -f "$FOOTER" ]]; then
-  echo "Missing partials/header.html or partials/footer.html" >&2
+if [[ ! -f "$HEADER" || ! -f "$FOOTER" || ! -f "$GTM_HEAD" ]]; then
+  echo "Missing partials/header.html, partials/footer.html, or partials/gtm-head.html" >&2
   exit 1
 fi
 
@@ -25,7 +26,7 @@ shopt -s nullglob
 count=0
 for src in src/*.html; do
   out="./$(basename "$src")"
-  awk -v hdr="$HEADER" -v ftr="$FOOTER" '
+  awk -v hdr="$HEADER" -v ftr="$FOOTER" -v gtm="$GTM_HEAD" '
     /<!--#include:header-->/ {
       print "<!-- GENERATED from src/ + partials/ - edit those, then run build.sh -->";
       while ((getline line < hdr) > 0) print line; close(hdr); next
@@ -42,6 +43,12 @@ for src in src/*.html; do
         gsub(/\(888\) 920-6662/, "<a href=\"tel:+18889206662\">(888) 920-6662</a>")
       }
       print
+      # Inject GTM head snippet immediately after the opening <head> tag,
+      # but only once per file and only if GTM is not already present.
+      if (!gtm_done && $0 ~ /<head>/) {
+        while ((getline gline < gtm) > 0) print gline; close(gtm)
+        gtm_done=1
+      }
       if ($0 ~ /<\/head>/) inhead=0
       if ($0 ~ /<\/script>/) inscript=0
     }
