@@ -17,142 +17,90 @@ https://phonepsychicreaders.com/*  https://www.phonepsychicreaders.com/:splat  3
 http://phonepsychicreaders.com/*   https://www.phonepsychicreaders.com/:splat  301!
 
 # --- Reading pages (old WP slugs had trailing slashes) ---
-/phone-tarot-reading/                                /phone-tarot-reading.html                                301
-/phone-tarot-reading                                 /phone-tarot-reading.html                                301
-/clairvoyant-reading/                                /clairvoyant-reading.html                                301
-/clairvoyant-reading                                 /clairvoyant-reading.html                                301
-/horoscope-astrology-psychic-readings-by-phone/      /horoscope-astrology-psychic-readings-by-phone.html      301
-/horoscope-astrology-psychic-readings-by-phone       /horoscope-astrology-psychic-readings-by-phone.html      301
-/psychic-love-readings-by-phone/                     /psychic-love-readings-by-phone.html                     301
-/psychic-love-readings-by-phone                      /psychic-love-readings-by-phone.html                     301
-/money-prosperity-psychic-readings/                  /money-prosperity-psychic-readings.html                  301
-/money-prosperity-psychic-readings                   /money-prosperity-psychic-readings.html                  301
-/past-life-psychic-readings-by-phone/                /past-life-psychic-readings-by-phone.html                301
-/past-life-psychic-readings-by-phone                 /past-life-psychic-readings-by-phone.html                301
-/dream-interpretation-psychic-readings-phone/        /dream-interpretation-psychic-readings-phone.html        301
-/dream-interpretation-psychic-readings-phone         /dream-interpretation-psychic-readings-phone.html        301
+/phone-tarot-reading/                                /phone-tarot-reading                                301
+/clairvoyant-reading/                                /clairvoyant-reading                                301
+/horoscope-astrology-psychic-readings-by-phone/      /horoscope-astrology-psychic-readings-by-phone      301
+/psychic-love-readings-by-phone/                     /psychic-love-readings-by-phone                     301
+/money-prosperity-psychic-readings/                  /money-prosperity-psychic-readings                  301
+/past-life-psychic-readings-by-phone/                /past-life-psychic-readings-by-phone                301
+/dream-interpretation-psychic-readings-phone/        /dream-interpretation-psychic-readings-phone        301
 
 # Major Arcana hub (original WP URL → rebuilt page)
-/major-arcana-tarot-card-meanings/                   /major-arcana-tarot-card-meanings.html                   301
-/major-arcana-tarot-card-meanings                    /major-arcana-tarot-card-meanings.html                   301
+/major-arcana-tarot-card-meanings/                   /major-arcana-tarot-card-meanings                   301
 
 # Minor Arcana hub (original WP URL → rebuilt page)
-/minor-arcana-tarot-card-meanings/                   /minor-arcana-tarot-card-meanings.html                   301
-/minor-arcana-tarot-card-meanings                    /minor-arcana-tarot-card-meanings.html                   301
+/minor-arcana-tarot-card-meanings/                   /minor-arcana-tarot-card-meanings                   301
 
 # --- Site pages ---
-/about-us/                                           /about.html                                              301
-/about-us                                            /about.html                                              301
-/contact-us/                                         /contact.html                                            301
-/contact-us                                          /contact.html                                            301
-/privacy-policy/                                     /privacy.html                                            301
-/privacy-policy                                      /privacy.html                                            301
-/terms-and-conditions/                               /terms.html                                              301
-/terms-and-conditions                                /terms.html                                              301
+/about-us/                                           /about                                              301
+/about-us                                            /about                                              301
+/contact-us/                                         /contact                                            301
+/contact-us                                          /contact                                            301
+/privacy-policy/                                     /privacy                                            301
+/privacy-policy                                      /privacy                                            301
+/terms-and-conditions/                               /terms                                              301
+/terms-and-conditions                                /terms                                              301
 
 # --- Blog ---
-/blog/                                               /blog.html                                               301
-/blog                                                /blog.html                                               301
+/blog/                                               /blog                                               301
 
-# --- Blog posts (old WP slugs -> new .html; #1 also fixes "phsycic" typo) ---
-/phone-phsycic-questions-and-answers/                /phone-psychic-questions-and-answers.html                301
-/phone-phsycic-questions-and-answers                 /phone-psychic-questions-and-answers.html                301
-/phone-psychic-questions-and-answers/                /phone-psychic-questions-and-answers.html                301
-/where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance/   /where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance.html   301
-/where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance    /where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance.html   301
-/which-phone-psychic-service-is-best-for-big-life-decisions/      /which-phone-psychic-service-is-best-for-big-life-decisions.html      301
-/which-phone-psychic-service-is-best-for-big-life-decisions       /which-phone-psychic-service-is-best-for-big-life-decisions.html      301
-/whos-the-best-phone-psychic-for-closure-after-a-loss/            /whos-the-best-phone-psychic-for-closure-after-a-loss.html            301
-/whos-the-best-phone-psychic-for-closure-after-a-loss             /whos-the-best-phone-psychic-for-closure-after-a-loss.html            301
-/where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities/  /where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities.html  301
-/where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities   /where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities.html  301
-/whos-the-best-phone-psychic-for-long-distance-relationships/    /whos-the-best-phone-psychic-for-long-distance-relationships.html     301
-/whos-the-best-phone-psychic-for-long-distance-relationships     /whos-the-best-phone-psychic-for-long-distance-relationships.html     301
-/where-can-i-get-a-phone-psychic-reading-about-money-choices/    /where-can-i-get-a-phone-psychic-reading-about-money-choices.html     301
-/where-can-i-get-a-phone-psychic-reading-about-money-choices     /where-can-i-get-a-phone-psychic-reading-about-money-choices.html     301
-/which-phone-psychic-service-is-best-for-yes-no-questions/       /which-phone-psychic-service-is-best-for-yes-no-questions.html        301
-/which-phone-psychic-service-is-best-for-yes-no-questions        /which-phone-psychic-service-is-best-for-yes-no-questions.html        301
-/whos-the-best-phone-psychic-for-marriage-decisions/             /whos-the-best-phone-psychic-for-marriage-decisions.html              301
-/whos-the-best-phone-psychic-for-marriage-decisions              /whos-the-best-phone-psychic-for-marriage-decisions.html              301
-/whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty/  /whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty.html  301
-/whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty   /whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty.html  301
+# --- Blog posts (old WP slugs -> clean URLs; #1 also fixes "phsycic" typo) ---
+/phone-phsycic-questions-and-answers/                /phone-psychic-questions-and-answers                301
+/phone-phsycic-questions-and-answers                 /phone-psychic-questions-and-answers                301
+/phone-psychic-questions-and-answers/                /phone-psychic-questions-and-answers                301
+/where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance/   /where-can-i-find-a-phone-psychic-for-honest-no-fluff-guidance   301
+/which-phone-psychic-service-is-best-for-big-life-decisions/      /which-phone-psychic-service-is-best-for-big-life-decisions      301
+/whos-the-best-phone-psychic-for-closure-after-a-loss/            /whos-the-best-phone-psychic-for-closure-after-a-loss            301
+/where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities/  /where-can-i-find-a-phone-psychic-to-talk-about-new-opportunities  301
+/whos-the-best-phone-psychic-for-long-distance-relationships/    /whos-the-best-phone-psychic-for-long-distance-relationships     301
+/where-can-i-get-a-phone-psychic-reading-about-money-choices/    /where-can-i-get-a-phone-psychic-reading-about-money-choices     301
+/which-phone-psychic-service-is-best-for-yes-no-questions/       /which-phone-psychic-service-is-best-for-yes-no-questions        301
+/whos-the-best-phone-psychic-for-marriage-decisions/             /whos-the-best-phone-psychic-for-marriage-decisions              301
+/whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty/  /whats-the-best-phone-psychic-service-for-anxiety-and-uncertainty  301
 
 # --- Areas serviced now has a geo hub ---
-/areas-serviced/                                     /locations.html                                          301
-/areas-serviced                                      /locations.html                                          301
+/areas-serviced/                                     /locations                                          301
+/areas-serviced                                      /locations                                          301
 
 # --- Superseded interim Burbank slugs -> recovery slug ---
-/phone-psychic-readings-burbank.html                 /burbank-phone-psychic.html                              301
-/psychic-burbank.html                                /burbank-psychic.html                                    301
-/psychic-reading-burbank.html                        /burbank-psychic-reading.html                            301
+/phone-psychic-readings-burbank.html                 /burbank-phone-psychic                              301
+/psychic-burbank.html                                /burbank-psychic                                    301
+/psychic-reading-burbank.html                        /burbank-psychic-reading                            301
 
 # --- Old {city}-phone-psychic URLs rebuilt (recover ranking equity) ---
-/burbank-phone-psychic/                              /burbank-phone-psychic.html                              301
-/burbank-phone-psychic                               /burbank-phone-psychic.html                              301
-/corona-del-mar-phone-psychic/                       /corona-del-mar-phone-psychic.html                       301
-/corona-del-mar-phone-psychic                        /corona-del-mar-phone-psychic.html                       301
-/dana-point-phone-psychic/                           /dana-point-phone-psychic.html                           301
-/dana-point-phone-psychic                            /dana-point-phone-psychic.html                           301
-/vacaville-phone-psychic/                            /vacaville-phone-psychic.html                            301
-/vacaville-phone-psychic                             /vacaville-phone-psychic.html                            301
-/pismo-beach-phone-psychic/                          /pismo-beach-phone-psychic.html                          301
-/pismo-beach-phone-psychic                           /pismo-beach-phone-psychic.html                          301
-/interlaken-phone-psychic/                           /interlaken-phone-psychic.html                           301
-/interlaken-phone-psychic                            /interlaken-phone-psychic.html                           301
-/lakeport-phone-psychic/                             /lakeport-phone-psychic.html                             301
-/lakeport-phone-psychic                              /lakeport-phone-psychic.html                             301
-/rowland-heights-phone-psychic/                      /rowland-heights-phone-psychic.html                      301
-/rowland-heights-phone-psychic                       /rowland-heights-phone-psychic.html                      301
-/palmdale-phone-psychic/                             /palmdale-phone-psychic.html                             301
-/palmdale-phone-psychic                              /palmdale-phone-psychic.html                             301
-/solvang-phone-psychic/                              /solvang-phone-psychic.html                              301
-/solvang-phone-psychic                               /solvang-phone-psychic.html                              301
-/placerville-phone-psychic/                          /placerville-phone-psychic.html                          301
-/placerville-phone-psychic                           /placerville-phone-psychic.html                          301
-/koreatown-phone-psychic/                            /koreatown-phone-psychic.html                            301
-/koreatown-phone-psychic                             /koreatown-phone-psychic.html                            301
-/healdsburg-phone-psychic/                           /healdsburg-phone-psychic.html                           301
-/healdsburg-phone-psychic                            /healdsburg-phone-psychic.html                           301
-/ukiah-phone-psychic/                                /ukiah-phone-psychic.html                                301
-/ukiah-phone-psychic                                 /ukiah-phone-psychic.html                                301
-/cerritos-phone-psychic/                             /cerritos-phone-psychic.html                             301
-/cerritos-phone-psychic                              /cerritos-phone-psychic.html                             301
-/cambria-phone-psychic/                              /cambria-phone-psychic.html                              301
-/cambria-phone-psychic                               /cambria-phone-psychic.html                              301
-/rancho-cordova-phone-psychic/                       /rancho-cordova-phone-psychic.html                       301
-/rancho-cordova-phone-psychic                        /rancho-cordova-phone-psychic.html                       301
-/glendale-phone-psychic/                             /glendale-phone-psychic.html                             301
-/glendale-phone-psychic                              /glendale-phone-psychic.html                             301
-/pasadena-phone-psychic/                             /pasadena-phone-psychic.html                             301
-/pasadena-phone-psychic                              /pasadena-phone-psychic.html                             301
-/north-hollywood-phone-psychic/                      /north-hollywood-phone-psychic.html                      301
-/north-hollywood-phone-psychic                       /north-hollywood-phone-psychic.html                      301
-/studio-city-phone-psychic/                          /studio-city-phone-psychic.html                          301
-/studio-city-phone-psychic                           /studio-city-phone-psychic.html                          301
-/toluca-lake-phone-psychic/                          /toluca-lake-phone-psychic.html                          301
-/toluca-lake-phone-psychic                           /toluca-lake-phone-psychic.html                          301
-/sherman-oaks-phone-psychic/                         /sherman-oaks-phone-psychic.html                         301
-/sherman-oaks-phone-psychic                          /sherman-oaks-phone-psychic.html                         301
-/la-canada-flintridge-phone-psychic/                 /la-canada-flintridge-phone-psychic.html                 301
-/la-canada-flintridge-phone-psychic                  /la-canada-flintridge-phone-psychic.html                 301
-/sun-valley-phone-psychic/                           /sun-valley-phone-psychic.html                           301
-/sun-valley-phone-psychic                            /sun-valley-phone-psychic.html                           301
-/hollywood-phone-psychic/                            /hollywood-phone-psychic.html                            301
-/hollywood-phone-psychic                             /hollywood-phone-psychic.html                            301
-/west-hollywood-phone-psychic/                       /west-hollywood-phone-psychic.html                       301
-/west-hollywood-phone-psychic                        /west-hollywood-phone-psychic.html                       301
-/universal-city-phone-psychic/                       /universal-city-phone-psychic.html                       301
-/universal-city-phone-psychic                        /universal-city-phone-psychic.html                       301
-/valley-village-phone-psychic/                       /valley-village-phone-psychic.html                       301
-/valley-village-phone-psychic                        /valley-village-phone-psychic.html                       301
-/van-nuys-phone-psychic/                             /van-nuys-phone-psychic.html                             301
-/van-nuys-phone-psychic                              /van-nuys-phone-psychic.html                             301
-/encino-phone-psychic/                               /encino-phone-psychic.html                               301
-/encino-phone-psychic                                /encino-phone-psychic.html                               301
-/silver-lake-phone-psychic/                          /silver-lake-phone-psychic.html                          301
-/silver-lake-phone-psychic                           /silver-lake-phone-psychic.html                          301
-/los-feliz-phone-psychic/                            /los-feliz-phone-psychic.html                            301
-/los-feliz-phone-psychic                             /los-feliz-phone-psychic.html                            301
+/burbank-phone-psychic/                              /burbank-phone-psychic                              301
+/corona-del-mar-phone-psychic/                       /corona-del-mar-phone-psychic                       301
+/dana-point-phone-psychic/                           /dana-point-phone-psychic                           301
+/vacaville-phone-psychic/                            /vacaville-phone-psychic                            301
+/pismo-beach-phone-psychic/                          /pismo-beach-phone-psychic                          301
+/interlaken-phone-psychic/                           /interlaken-phone-psychic                           301
+/lakeport-phone-psychic/                             /lakeport-phone-psychic                             301
+/rowland-heights-phone-psychic/                      /rowland-heights-phone-psychic                      301
+/palmdale-phone-psychic/                             /palmdale-phone-psychic                             301
+/solvang-phone-psychic/                              /solvang-phone-psychic                              301
+/placerville-phone-psychic/                          /placerville-phone-psychic                          301
+/koreatown-phone-psychic/                            /koreatown-phone-psychic                            301
+/healdsburg-phone-psychic/                           /healdsburg-phone-psychic                           301
+/ukiah-phone-psychic/                                /ukiah-phone-psychic                                301
+/cerritos-phone-psychic/                             /cerritos-phone-psychic                             301
+/cambria-phone-psychic/                              /cambria-phone-psychic                              301
+/rancho-cordova-phone-psychic/                       /rancho-cordova-phone-psychic                       301
+/glendale-phone-psychic/                             /glendale-phone-psychic                             301
+/pasadena-phone-psychic/                             /pasadena-phone-psychic                             301
+/north-hollywood-phone-psychic/                      /north-hollywood-phone-psychic                      301
+/studio-city-phone-psychic/                          /studio-city-phone-psychic                          301
+/toluca-lake-phone-psychic/                          /toluca-lake-phone-psychic                          301
+/sherman-oaks-phone-psychic/                         /sherman-oaks-phone-psychic                         301
+/la-canada-flintridge-phone-psychic/                 /la-canada-flintridge-phone-psychic                 301
+/sun-valley-phone-psychic/                           /sun-valley-phone-psychic                           301
+/hollywood-phone-psychic/                            /hollywood-phone-psychic                            301
+/west-hollywood-phone-psychic/                       /west-hollywood-phone-psychic                       301
+/universal-city-phone-psychic/                       /universal-city-phone-psychic                       301
+/valley-village-phone-psychic/                       /valley-village-phone-psychic                       301
+/van-nuys-phone-psychic/                             /van-nuys-phone-psychic                             301
+/encino-phone-psychic/                               /encino-phone-psychic                               301
+/silver-lake-phone-psychic/                          /silver-lake-phone-psychic                          301
+/los-feliz-phone-psychic/                            /los-feliz-phone-psychic                            301
 
 # --- Sitemap consolidation: old singular -> new Yoast-style index ---
 /sitemap.xml      /sitemap_index.xml      301

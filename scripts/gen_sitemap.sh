@@ -133,7 +133,9 @@ write_url_entry() {
   local f="$1" out="$2" slug bucket loc lastmod priority changefreq
   slug="${f%.html}"
   bucket=$(classify "$f")
-  if [ "$slug" = "index" ]; then loc="${BASE}/"; else loc="${BASE}/${f}"; fi
+  # Clean URLs: homepage = bare /, all others = /slug (no .html).
+  # Netlify's pretty-URLs feature serves /slug from /slug.html.
+  if [ "$slug" = "index" ]; then loc="${BASE}/"; else loc="${BASE}/${slug}"; fi
   lastmod=$(lastmod_for "$f")
   priority=$(priority_for "$slug" "$bucket")
   changefreq=$(changefreq_for "$slug" "$bucket")

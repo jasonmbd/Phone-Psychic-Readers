@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.phonepsychicreaders.com/about.html</loc>
+    <loc>https://www.phonepsychicreaders.com/about</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.phonepsychicreaders.com/blog.html</loc>
+    <loc>https://www.phonepsychicreaders.com/blog</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.phonepsychicreaders.com/contact.html</loc>
+    <loc>https://www.phonepsychicreaders.com/contact</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -25,20 +25,21 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.phonepsychicreaders.com/locations.html</loc>
+    <loc>https://www.phonepsychicreaders.com/locations</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.phonepsychicreaders.com/privacy.html</loc>
+    <loc>https://www.phonepsychicreaders.com/privacy</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.phonepsychicreaders.com/terms.html</loc>
+    <loc>https://www.phonepsychicreaders.com/terms</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+</urlset>

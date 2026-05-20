@@ -63,6 +63,11 @@ for src in src/*.html; do
   ' "$src" \
   | sed -e "s#assets/css/styles\.css\(?v=[0-9a-f]*\)\?#assets/css/styles.css?v=${CSS_V}#g" \
         -e "s#assets/js/main\.js\(?v=[0-9a-f]*\)\?#assets/js/main.js?v=${JS_V}#g" \
+  | sed -E \
+        -e 's|https://www\.phonepsychicreaders\.com/index\.html|https://www.phonepsychicreaders.com/|g' \
+        -e 's|https://www\.phonepsychicreaders\.com/([a-z0-9-]+)\.html|https://www.phonepsychicreaders.com/\1|g' \
+        -e 's|href="index\.html"|href="/"|g' \
+        -e 's|href="([a-z0-9-]+)\.html"|href="\1"|g' \
   | awk -f scripts/inject_og.awk \
   > "$out"
   echo "built $out"
