@@ -30,6 +30,8 @@ cd "$(dirname "$0")/.."
 BASE="https://www.phonepsychicreaders.com"
 
 # --- Bucket each *.html into exactly one content type ---
+# Per-city silos drill down into their own sub-sitemap so GSC reports
+# indexing status per city, not in one 245-URL bucket.
 classify() {
   local f="$1" slug
   slug="${f%.html}"
@@ -38,7 +40,11 @@ classify() {
     index|about|contact|privacy|terms|locations|blog) echo page ;;
     *-phone-psychic) echo location ;;
     burbank-*) echo burbank ;;
-    glendale-*|north-hollywood-*|toluca-lake-*|universal-city-*|sun-valley-*) echo city-services ;;
+    glendale-*) echo glendale ;;
+    north-hollywood-*) echo north-hollywood ;;
+    toluca-lake-*) echo toluca-lake ;;
+    universal-city-*) echo universal-city ;;
+    sun-valley-*) echo sun-valley ;;
     arcana-*|*-tarot-card-meaning|*-tarot-card-meaning-*) echo tarot ;;
     whos-*|what-*|how-*|why-*|when-*) echo post ;;
     psychic|astrologer|numerologist|fortune-telling-services) echo category ;;
@@ -67,7 +73,8 @@ priority_for() {
                burbank-psychic|burbank-astrologer|burbank-numerologist|burbank-fortune-telling-services) echo "0.85" ;;
                *) echo "0.75" ;;
              esac ;;
-    city-services) case "$slug" in
+    glendale|north-hollywood|toluca-lake|universal-city|sun-valley)
+                   case "$slug" in
                      *-psychic|*-astrologer|*-numerologist|*-fortune-telling-services) echo "0.7" ;;
                      *) echo "0.6" ;;
                    esac ;;
@@ -122,7 +129,11 @@ BUCKET_FILE[category]="category-sitemap.xml"
 BUCKET_FILE[service]="service-sitemap.xml"
 BUCKET_FILE[location]="location-sitemap.xml"
 BUCKET_FILE[burbank]="burbank-sitemap.xml"
-BUCKET_FILE[city-services]="city-services-sitemap.xml"
+BUCKET_FILE[glendale]="glendale-sitemap.xml"
+BUCKET_FILE[north-hollywood]="north-hollywood-sitemap.xml"
+BUCKET_FILE[toluca-lake]="toluca-lake-sitemap.xml"
+BUCKET_FILE[universal-city]="universal-city-sitemap.xml"
+BUCKET_FILE[sun-valley]="sun-valley-sitemap.xml"
 BUCKET_FILE[tarot]="tarot-sitemap.xml"
 BUCKET_FILE[post]="post-sitemap.xml"
 
@@ -166,8 +177,9 @@ done
   echo '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 } > sitemap_index.xml
 
-# Order: pages -> categories -> services -> locations -> burbank -> city-services -> tarot -> posts
-for b in page category service location burbank city-services tarot post; do
+# Order: pages -> categories -> services -> locations -> burbank ->
+#        per-touching-city silos (alphabetical) -> tarot -> posts
+for b in page category service location burbank glendale north-hollywood toluca-lake universal-city sun-valley tarot post; do
   out="${BUCKET_FILE[$b]}"
   count="${BUCKET_COUNT[$b]:-0}"
   [ "$count" -eq 0 ] && continue
@@ -201,13 +213,16 @@ fi
 # --- Summary ---
 echo "--- sitemap_index.xml + sub-sitemaps written ---"
 total=0
-for b in page category service location burbank city-services tarot post; do
+for b in page category service location burbank glendale north-hollywood toluca-lake universal-city sun-valley tarot post; do
   c="${BUCKET_COUNT[$b]:-0}"
   total=$((total + c))
-  printf "  %-22s %4d URLs   lastmod=%s\n" "${BUCKET_FILE[$b]}" "$c" "${BUCKET_LASTMOD[$b]:-n/a}"
+  printf "  %-32s %4d URLs   lastmod=%s\n" "${BUCKET_FILE[$b]}" "$c" "${BUCKET_LASTMOD[$b]:-n/a}"
 done
-echo "  ---------------------------"
-printf "  %-22s %4d URLs total across %d sub-sitemaps\n" "TOTAL" "$total" "${#BUCKET_FILE[@]}"
+echo "  ------------------------------------"
+printf "  %-32s %4d URLs total across %d sub-sitemaps\n" "TOTAL" "$total" "${#BUCKET_FILE[@]}"
 echo "  master: sitemap_index.xml -> ${BASE}/sitemap_index.xml"
 echo "  robots: ${BASE}/robots.txt"
 echo "  redirect: /sitemap.xml -> /sitemap_index.xml (301)"
+
+# --- Clean up the old combined city-services-sitemap if it lingers ---
+rm -f city-services-sitemap.xml
