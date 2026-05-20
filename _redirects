@@ -139,3 +139,6 @@
 /silver-lake-phone-psychic                           /silver-lake-phone-psychic.html                          301
 /los-feliz-phone-psychic/                            /los-feliz-phone-psychic.html                            301
 /los-feliz-phone-psychic                             /los-feliz-phone-psychic.html                            301
+
+# --- Sitemap consolidation: old singular -> new Yoast-style index ---
+/sitemap.xml      /sitemap_index.xml      301
