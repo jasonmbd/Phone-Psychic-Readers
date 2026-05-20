@@ -80,3 +80,32 @@ echo "Done. $count page(s) built."
 if [ -f scripts/gen_sitemap.sh ]; then
   bash scripts/gen_sitemap.sh
 fi
+
+# --- Auto-regenerate the .html-to-404 redirect section in _redirects ---
+# Clean URLs are the only public form: visitors hit /burbank-phone-psychic,
+# never /burbank-phone-psychic.html. Netlify's _redirects splat doesn't
+# support a suffix pattern (/*.html doesn't match), so we enumerate one
+# explicit rule per *.html file. New pages auto-get a 404 rule on every
+# build via this regen step.
+if [ -f _redirects ]; then
+  START="# === AUTO-GENERATED: .html-to-404 rules (do not edit by hand) ==="
+  END="# === END AUTO-GENERATED .html-to-404 rules ==="
+  # Strip any prior auto-gen section
+  awk -v s="$START" -v e="$END" '
+    $0==s {skip=1; next}
+    $0==e {skip=0; next}
+    !skip {print}
+  ' _redirects > _redirects.tmp
+  # Append fresh section
+  {
+    printf "\n%s\n" "$START"
+    echo "# Force the 404 page with HTTP 404 status for any direct .html URL."
+    echo "# Regenerated on every build from the list of *.html in the repo root."
+    for f in *.html; do
+      printf "/%-72s /404  404!\n" "$f"
+    done
+    echo "$END"
+  } >> _redirects.tmp
+  mv _redirects.tmp _redirects
+  echo "regen .html-to-404 redirects: $(ls *.html | wc -l) rule(s)"
+fi
