@@ -116,6 +116,14 @@ BEGIN {
         print "<link rel=\"preload\" as=\"image\" href=\"" og_image_abs "\" fetchpriority=\"high\">"
       }
     }
+    # Preconnect to third-party origins GTM brings in. Each preconnect
+    # opens the TCP+TLS handshake in parallel with HTML parsing instead
+    # of in serial when the GTM-injected scripts later request them.
+    # Saves ~200-400ms of latency per origin on the first call.
+    print "<link rel=\"preconnect\" href=\"https://www.googletagmanager.com\">"
+    print "<link rel=\"preconnect\" href=\"https://www.google-analytics.com\">"
+    print "<link rel=\"preconnect\" href=\"https://connect.facebook.net\">"
+    print "<link rel=\"dns-prefetch\" href=\"https://cdn.subscribers.com\">"
     injected = 1
   }
 }

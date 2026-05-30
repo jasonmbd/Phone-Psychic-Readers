@@ -66,8 +66,21 @@ for src in src/*.html; do
       if ($0 ~ /<\/script>/) inscript=0
     }
   ' "$src" \
-  | sed -e "s#assets/css/styles\.css\(?v=[0-9a-f]*\)\?#assets/css/styles.css?v=${CSS_V}#g" \
-        -e "s#assets/js/main\.js\(?v=[0-9a-f]*\)\?#assets/js/main.js?v=${JS_V}#g" \
+  | sed -e "s#assets/js/main\.js\(?v=[0-9a-f]*\)\?#assets/js/main.js?v=${JS_V}#g" \
+  | awk -v css_file="assets/css/styles.css" '
+      # Inline the whole stylesheet replacing the blocking <link rel="stylesheet">
+      # tag. CSS is ~25KB pre-gzip (~5KB compressed), small enough that the
+      # eliminated render-blocking round-trip beats the per-page HTML cost.
+      # Trade-off accepted: removes the chained CSS request from the LCP path.
+      /<link[^>]*rel="stylesheet"[^>]*assets\/css\/styles\.css/ {
+        print "<style>"
+        while ((getline line < css_file) > 0) print line
+        close(css_file)
+        print "</style>"
+        next
+      }
+      { print }
+    ' \
   | sed -E \
         -e 's|https://www\.phonepsychicreaders\.com/index\.html|https://www.phonepsychicreaders.com/|g' \
         -e 's|https://www\.phonepsychicreaders\.com/([a-z0-9-]+)\.html|https://www.phonepsychicreaders.com/\1|g' \
