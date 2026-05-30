@@ -17,7 +17,7 @@ cd "$(dirname "$0")/.."
 # ~67x67 - 2x DPR = 134x134 is plenty.
 MAX_W=960
 MAX_H=720
-ICON_MAX=140
+ICON_MAX=67
 resized=0
 skipped=0
 for img in assets/img/*.jpg assets/img/*.png; do
@@ -29,7 +29,10 @@ for img in assets/img/*.jpg assets/img/*.png; do
   case "$img" in
     *brand-icon*|*-icon.png)
       if [ "$w" -gt "$ICON_MAX" ] || [ "$h" -gt "$ICON_MAX" ]; then
-        magick "$img" -resize "${ICON_MAX}x${ICON_MAX}>" -strip "$img"
+        # PNG icons: aggressive palette-mode compression. Brand icon
+        # displayed at 67x67 so no need for retina (smoothing handles it).
+        magick "$img" -resize "${ICON_MAX}x${ICON_MAX}>" -strip -colors 64 \
+          -define png:compression-level=9 -define png:compression-strategy=1 "$img"
         new_dims=$(magick identify -format "%wx%h" "$img")
         new_kb=$(du -k "$img" | cut -f1)
         printf "  resized %-50s %dx%d -> %s, now %d KB (icon)\n" "$img" "$w" "$h" "$new_dims" "$new_kb"
