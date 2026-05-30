@@ -14,8 +14,10 @@ for jpg in assets/img/*.jpg; do
     skipped=$((skipped+1))
     continue
   fi
-  # -strip drops EXIF/color profiles; -quality 80 is the WebP sweet spot
-  magick "$jpg" -strip -quality 80 -define webp:method=6 "$webp" 2>/dev/null
+  # -strip drops EXIF/color profiles; quality 75 + method 6 is the
+  # mobile-perf sweet spot - hard to distinguish from 80 visually but
+  # ~15-20% smaller files.
+  magick "$jpg" -strip -quality 75 -define webp:method=6 "$webp" 2>/dev/null
   count=$((count+1))
 done
 
