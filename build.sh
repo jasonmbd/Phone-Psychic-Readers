@@ -18,6 +18,11 @@ if [[ ! -f "$HEADER" || ! -f "$FOOTER" || ! -f "$GTM_HEAD" || ! -f "$GTM_BODY" ]
   exit 1
 fi
 
+# --- Regenerate WebP for any new/updated JPGs (idempotent) ---
+if [ -f scripts/gen_webp.sh ] && command -v magick >/dev/null 2>&1; then
+  bash scripts/gen_webp.sh
+fi
+
 # Content-hash versions: change only when the asset changes
 CSS_V=$(md5sum assets/css/styles.css | cut -c1-10)
 JS_V=$(md5sum assets/js/main.js | cut -c1-10)
@@ -68,6 +73,7 @@ for src in src/*.html; do
         -e 's|https://www\.phonepsychicreaders\.com/([a-z0-9-]+)\.html|https://www.phonepsychicreaders.com/\1|g' \
         -e 's|href="index\.html"|href="/"|g' \
         -e 's|href="([a-z0-9-]+)\.html"|href="\1"|g' \
+  | awk -f scripts/img_optimize.awk \
   | awk -f scripts/inject_og.awk \
   > "$out"
   echo "built $out"

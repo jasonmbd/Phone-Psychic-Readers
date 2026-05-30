@@ -103,6 +103,19 @@ BEGIN {
     if (!has_tw_image && og_image_abs != "") {
       print "<meta name=\"twitter:image\" content=\"" og_image_abs "\">"
     }
+    # Preload the hero (= og:image) so it starts downloading before the
+    # body parses - directly improves Largest Contentful Paint. Prefer
+    # the .webp variant since img_optimize.awk wraps the <img> tag with
+    # a <picture> that serves WebP to 96%+ of in-use browsers.
+    if (og_image_abs != "") {
+      hero_webp = og_image_abs
+      sub(/\.jpg$/, ".webp", hero_webp)
+      if (hero_webp != og_image_abs) {
+        print "<link rel=\"preload\" as=\"image\" href=\"" hero_webp "\" type=\"image/webp\" fetchpriority=\"high\">"
+      } else {
+        print "<link rel=\"preload\" as=\"image\" href=\"" og_image_abs "\" fetchpriority=\"high\">"
+      }
+    }
     injected = 1
   }
 }
