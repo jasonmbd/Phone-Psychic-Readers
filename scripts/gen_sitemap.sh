@@ -31,8 +31,9 @@ BASE="https://www.phonepsychicreaders.com"
 
 # --- Build BLOG_POSTS set from blog.html (canonical source of truth) ---
 # blog.html lists every blog post inside <li class="post-card"> entries.
-# Reading from that index means new posts auto-route to post-sitemap.xml
-# the moment they're added to the blog page - no prefix-pattern guessing.
+# After clean-URL conversion the hrefs are slug-only (no .html), so the
+# regex accepts both forms and normalizes to "<slug>.html" so the lookup
+# matches the actual filename on disk.
 declare -A BLOG_POSTS
 if [ -f blog.html ]; then
   while IFS= read -r href; do
@@ -40,10 +41,12 @@ if [ -f blog.html ]; then
   done < <(awk '
     /<li class="post-card"/{ p=1; next }
     p && /href="/ {
-      if (match($0, /href="[a-z0-9-]+\.html"/)) {
+      # Accept href="foo" or href="foo.html"; output normalized "foo.html"
+      if (match($0, /href="[a-z0-9-]+(\.html)?"/)) {
         hr=substr($0, RSTART, RLENGTH)
         gsub(/href="|"/, "", hr)
-        print hr
+        sub(/\.html$/, "", hr)
+        print hr ".html"
         p=0
       }
     }
